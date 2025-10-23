@@ -23,5 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 
-almaMaxin21!)21
-ssh -i ~/.ssh/ci_deploy deploy@212.38.95.243
