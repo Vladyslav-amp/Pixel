@@ -21,7 +21,7 @@ export default function MainWindow() {
             </span>
 
             <h2 className="MainWindow-mid__title-text">
-              PRODUKT INFORMATION SHEET
+              PRODUCT INFORMATION SHEET
             </h2>
           </div>
 
