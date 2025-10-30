@@ -1,0 +1,169 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  animation: fadeIn .25s ease forwards;
+  overflow: hidden;
+
+  // &--below {
+  //   position: absolute;
+  //   inset: unset;
+  //   top: 235px;
+  //   left: 0;
+  //   right: 0;
+  //   z-index: 10;
+  // }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 0;
+    opacity: 0;
+    animation: backdropFade .25s ease forwards;
+    cursor: default;
+  }
+
+  &__panel {
+    position: relative;
+    z-index: 1;
+    cursor: default;
+    width: 100%;
+    max-width: 462px;
+    overflow-y: auto;
+    border-radius: 8px;
+    border: 1px solid #FFF;
+    background: rgba(255, 255, 255, 0.10);
+    padding: 24px 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .4);
+    opacity: 0;
+    transform: translateY(12px) scale(.98);
+    animation: panelIn .28s cubic-bezier(.4, 0, .2, 1) forwards;
+  }
+}
+
+.contact-form {
+  display: grid;
+  gap: 12px;
+  cursor: default;
+
+  &__field {
+    display: grid;
+    gap: 12px;
+  }
+
+  &__label {
+    color: $submain-text-color;
+    font-family: $submain-text-font;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.80);
+
+    &:focus {
+      border-color: #49A0A9;
+      box-shadow: 0 0 0 3px rgba(73, 160, 169, .3);
+    }
+
+    &::placeholder {
+      color: $main-text-color;
+      font-family: $main-text-font;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 84px;
+  }
+
+  &__error {
+    color: #ff6b6b;
+    font-size: 14px;
+    font-family: $main-text-font;
+  }
+
+  &__ok {
+    color: #5cd68d;
+    font-size: 14px;
+    font-family: $main-text-font;
+  }
+
+  &__submit {
+    display: flex;
+    padding: 18px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 8px;
+    background: $main-text-color;
+    color: $submain-text-color;
+    font-family: $main-text-font;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: center;
+
+    &:disabled {
+      opacity: .6;
+      cursor: default;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes backdropFade {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes panelIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

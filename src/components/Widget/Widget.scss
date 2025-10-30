@@ -1,0 +1,205 @@
+/* src/components/Widget/Widget.scss */
+@use "@/styles/variables/variables" as *;
+
+.widget {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  position: relative; // потрібно для фонових плиток або подвійних зображень
+
+  /* ---- РОЗМІРИ ---- */
+  &--size-sm {
+    width: 96px;
+    height: 119px;
+  }
+
+  &--size-md {
+    width: 204px;
+    height: 242px;
+
+    .widget__text {
+      font-size: 24px;
+    }
+
+    .widget__caption {
+      padding-block-start: 12px;
+    }
+  }
+
+  &--size-lg {
+    width: 312px;
+    height: 204px;
+
+    .widget__text {
+      font-size: 24px;
+    }
+  }
+
+  /* ---- МЕДІА ---- */
+  &__media {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+    /* для абсолютного позиціонування бек-образу */
+  }
+
+  &__img {
+    display: block;
+  }
+
+  &--fit-cover .widget__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 8px;
+  }
+
+  &--fit-content .widget__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* ---- ТЕКСТ ---- */
+  &__caption {
+    flex: 0 0 auto;
+    padding: 6px 0 0 0;
+    text-align: center;
+  }
+
+  &__text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: $main-text-color;
+    text-align: center;
+    font-family: $main-text-font;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &--with-bg {
+    --tile-w: 92px;
+    --tile-h: 92px;
+
+    &.widget--size-md {
+      --tile-w: 140px;
+      --tile-h: 140px;
+    }
+
+    &.widget--size-lg {
+      --tile-w: 180px;
+      --tile-h: 180px;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 28px;
+      width: var(--tile-w);
+      height: var(--tile-h);
+      border-radius: 12px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      opacity: var(--bg-opacity, 0.18);
+      z-index: 0;
+      pointer-events: none;
+      filter: saturate(1) brightness(0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .18);
+    }
+
+    &::before {
+      left: -6px;
+      background-image: var(--bg-left, none);
+      transform: rotate(-7deg);
+    }
+
+    &::after {
+      right: -6px;
+      background-image: var(--bg-right, none);
+      transform: rotate(7deg);
+    }
+
+    &.widget--bg-mirror::after {
+      transform: scaleX(-1) rotate(7deg);
+      background-position: center;
+    }
+
+    .widget__media {
+      z-index: 1;
+    }
+  }
+}
+
+.widget--double {
+  --back-shift-x: 6px;
+  --back-shift-y: 6px;
+  --back-rotate: -8deg;
+  --front-rotate: 4deg;
+
+  &.widget--size-md {
+    --back-shift-x: 10px;
+    --back-shift-y: 10px;
+    --back-rotate: -7deg;
+    --front-rotate: 3deg;
+  }
+
+  &.widget--size-lg {
+    --back-shift-x: 12px;
+    --back-shift-y: 12px;
+    --back-rotate: -6deg;
+    --front-rotate: 3deg;
+  }
+
+  .widget__media {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .widget__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    display: block;
+    transition: transform 0.25s ease;
+  }
+
+  /* заднє зображення (ідентичного розміру) */
+  .widget__img--back {
+    position: absolute;
+    inset: 0;
+    transform: scale(0.8) rotate(var(--back-rotate));
+    transform-origin: center center;
+    // filter: brightness(0.9) blur(2px);
+    opacity: 0.85;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* переднє зображення */
+  .widget__img--front {
+    position: relative;
+    z-index: 1;
+    transform: rotate(var(--front-rotate));
+  }
+
+  &:hover .widget__img--front {
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  &:hover .widget__img--back {
+    transform: rotate(-10deg) scale(.9);
+  }
+}

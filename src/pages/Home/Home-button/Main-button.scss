@@ -1,0 +1,58 @@
+@use  '/src/styles/variables/variables.scss' as *;
+
+.main-button {
+  padding-block: 12px;
+  border-radius: 8px;
+  font-family: $main-text-font;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s ease;
+  border: none;
+  
+
+  &__text {
+    pointer-events: none;
+  }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.main-button--dark {
+  background-color: $main-button-background;
+  color: $submain-text-color;
+
+  &:hover:not(:disabled) {
+    background-color: #222;
+  }
+
+  &:active:not(:disabled) {
+    background-color: #000;
+  }
+}
+
+.main-button--light {
+  background-color: rgba($main-button-background, 10%);
+  color: $main-text-color;
+
+  &:hover:not(:disabled) {
+    background-color: #f2f2f2;
+  }
+
+  &:active:not(:disabled) {
+    background-color: #e6e6e6;
+  }
+}

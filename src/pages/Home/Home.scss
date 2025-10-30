@@ -1,23 +1,20 @@
-body {
-  background-image: url("/images/body_bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-}
-
-.hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-
-  &__title {
-    font-size: 60px;
-    font-family: "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    color: #fed263;
-    letter-spacing: 10px;
+.header-main {
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle,
+        var(--dot) 0 var(--dot-size),
+        transparent calc(var(--dot-size) + 1px))
+      0 0 / var(--gap) var(--gap) repeat;
+    z-index: 0;
+    pointer-events: none;
   }
 }
+
+  :root{         
+    --dot: #fff;        
+    --dot-size: .5px;    
+    --gap: 80px; 
+  }

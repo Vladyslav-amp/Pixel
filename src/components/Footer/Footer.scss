@@ -1,0 +1,109 @@
+@use "@/styles/variables/variables" as *;
+@use "@/styles/mixins/mixins" as *;
+
+.footer {
+  @include section-padding;
+  background: $main-text-color;
+  color: $main-text-color;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-block {
+    @include max-width-page;
+  }
+
+  &__nav {
+    width: 100%;
+  }
+
+  &__menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__menu-link {
+    display: inline-block;
+    text-decoration: none;
+    color: $submain-text-color;
+    text-align: center;
+    font-family: $submain-text-font;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    padding-block: 6px;
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      outline: none;
+    }
+  }
+
+  &__bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 54px;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+
+    &--left {
+      justify-content: flex-start;
+
+      & .footer__link {
+        text-align: left;
+      }
+    }
+
+    &--right {
+      justify-content: flex-end;
+
+      & .footer__link {
+        text-align: right;
+      }
+    }
+  }
+
+  &__link {
+    color: $submain-text-color;
+    text-decoration: none;
+    color: $submain-text-color;
+    font-family: $main-text-font;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    text-transform: uppercase;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: transparent;
+      transition: background 0.2s ease;
+    }
+
+
+  }
+}
