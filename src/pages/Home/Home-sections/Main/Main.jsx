@@ -1,6 +1,6 @@
 import './Main.scss';
 
-import MainWindow from '../../Home-window/main-window.jsx';
+import MainWindow from '../../../Home/Home-window/Main-window.jsx';
 import Widget from '../../../../components/Widget/Widget.jsx';
 import ExpandableWidget from '../../../../components/ExpandableWidget/ExpandableWidget.jsx';
 // import { ReactComponent as PlayIcon } from 'assets/play.svg';
