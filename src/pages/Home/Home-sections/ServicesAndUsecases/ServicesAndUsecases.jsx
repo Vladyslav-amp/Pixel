@@ -1,6 +1,6 @@
 import Widget from '../../../../components/Widget/Widget';
 import MainButton from '../../../Home/Home-button/Main-button';
-import './servicesandusecases.scss';
+import './ServicesAndUsecases.scss';
 
 export default function servicesandusecases({ id }) {
   return (
