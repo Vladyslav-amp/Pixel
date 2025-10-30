@@ -1,5 +1,5 @@
 import Widget from '../../../../components/Widget/Widget';
-import MainButton from '../../Home-button/Main-Button';
+import MainButton from '../../../Home/Home-button/Main-button';
 import './servicesandusecases.scss';
 
 export default function servicesandusecases({ id }) {

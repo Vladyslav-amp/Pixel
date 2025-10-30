@@ -1,4 +1,4 @@
-import MainButton from '../Home-button/Main-button.jsx';
+import MainButton from '../Home-button/Main-button';
 import './Main-window.scss'
 
 
