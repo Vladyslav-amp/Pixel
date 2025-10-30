@@ -4,7 +4,7 @@ import './Home.scss';
 import Header from '../../components/Header/Header.jsx';
 import useActiveSection from '../../hooks/useActiveSection.js';
 import useSectionVisible from '../../hooks/useSectionVisible.js';
-import MainButton from './Home-button/Main-Button.jsx';
+import MainButton from '../../pages/Home/Home-button/Main-button.jsx';
 import ContactModal from '../../components/ContactModal/ContactModal.jsx';
 
 import Main from './Home-sections/Main/Main.jsx';
