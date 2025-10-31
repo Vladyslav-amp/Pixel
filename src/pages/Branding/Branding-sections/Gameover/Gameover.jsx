@@ -4,6 +4,8 @@ import Widget from "../../../../components/Widget/Widget.jsx";
 import GlitchEffect from '../../Effects/GlitchEffect.jsx'
 import MainButton from "../../../Home/Home-button/Main-button.jsx";
 
+import gameover from '@/assets/images/widgets/older.png';
+
 export default function Gameover({ id }) {
   return (
     <section id={id} className="gameover">
@@ -38,7 +40,7 @@ export default function Gameover({ id }) {
         </div>
 
         <div className="gameover-block__widget">
-          <Widget size="sm" imageSrc="/src/assets/images/widgets/older.png" text="PixelMate" />
+          <Widget size="sm" imageSrc={gameover} text="PixelMate" />
         </div>
       </div>
     </section>

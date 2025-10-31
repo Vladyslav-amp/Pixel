@@ -59,7 +59,8 @@
   cursor: default;
 
   &__field {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
   }
 

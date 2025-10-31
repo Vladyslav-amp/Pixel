@@ -29,6 +29,7 @@
     @include max-width-page;
     grid-auto-rows: minmax(0, auto);
     row-gap: 12px;
+    grid-column: 1 / 4;
 
     &__top {
       display: flex;
@@ -62,14 +63,39 @@
       }
     }
 
+    &__widget {
+      &--tablet {
+        display: none;
+
+        @include onTablet {
+          display: block;
+        }
+      }
+    }
+
     & :nth-child(1) {
       grid-column: 1 / 4;
       grid-row: 1;
+
+      @include onTablet {
+        grid-column: 3 / 7;
+        grid-row: 2;
+      }
     }
 
     & :nth-child(2) {
-      grid-column: 1 / 4;
+      grid-column: 1 / -1;
       grid-row: 2;
+
+      @include onTablet {
+        grid-column: 1 / 6;
+        grid-row: 3;
+      }
+    }
+
+    & :nth-child(3) {
+      grid-column: 5 / -1;
+      grid-row: 1;
     }
   }
 }

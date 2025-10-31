@@ -73,15 +73,15 @@ export default function Brandbook({ id }) {
         </div>
 
         <div className="brandbook-block__widget">
-          <Widget size="sm" imageSrc="src/assets/images/widgets/video.png" text="Pixel vs Traditional" />
+          <Widget size="sm" imageSrc="@/assets/images/widgets/video.png" text="Pixel vs Traditional" />
         </div>
 
         <div className="brandbook-block__widget">
-          <Widget size="sm" imageSrc="src/assets/images/widgets/white-folder.svg" text="See examples" />
+          <Widget size="sm" imageSrc="@/assets/images/widgets/white-folder.svg" text="See examples" />
         </div>
 
         <div className="brandbook-block__widget">
-          <Widget size="sm" imageSrc="src/assets/images/widgets/pixel-mate.png" text="PixelMate" />
+          <Widget size="sm" imageSrc="@/assets/images/widgets/pixel-mate.png" text="PixelMate" />
         </div>
       </div>
     </section>
