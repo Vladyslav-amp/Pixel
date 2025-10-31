@@ -26,37 +26,45 @@ export function AccordionItem({
   children,
   isOpen,
   onToggle,
-  _idx,
-  total,
+
 }) {
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
   const [height, setHeight] = useState(0);
 
-  // обчислення висоти контенту для плавного відкриття
   useEffect(() => {
-    if (contentRef.current) setHeight(contentRef.current.scrollHeight);
-  }, [children, media, subtitle, isOpen]);
-
-  // авто-прокрутка, якщо відкривається останній акордіон
-  useEffect(() => {
-    if (isOpen && sectionRef.current) {
-      // невелика затримка, щоб блок встиг розкритися
-      setTimeout(() => {
-        const rect = sectionRef.current.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const bottomVisible = window.innerHeight - 40; // трохи запасу знизу
-
-        // якщо низ акордіону виходить за межі екрана — докручуємо
-        if (rect.bottom > bottomVisible) {
-          window.scrollTo({
-            top: scrollTop + (rect.bottom - bottomVisible),
-            behavior: "smooth",
-          });
-        }
-      }, 350);
+  function updateHeight() {
+    if (contentRef.current) {
+      setHeight(contentRef.current.scrollHeight);
     }
-  }, [isOpen, _idx, total]);
+  }
+
+  if (isOpen) {
+    updateHeight();
+    const timer = setTimeout(updateHeight, 400);
+    window.addEventListener("resize", updateHeight);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", updateHeight);
+    };
+  }
+}, [isOpen, children, media]);
+
+  useEffect(() => {
+  if (isOpen && sectionRef.current) {
+    setTimeout(() => {
+      const headerOffset = 80;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      const offsetBottom = rect.top + scrollY - headerOffset - 16;
+
+      window.scrollTo({
+        top: offsetBottom,
+        behavior: "smooth",
+      });
+    }, 350);
+  }
+}, [isOpen]);
 
 
   return (
@@ -64,7 +72,6 @@ export function AccordionItem({
       ref={sectionRef}
       className={`brandbook-acc__item ${isOpen ? "brandbook-acc__item--open" : ""}`}
     >
-      {/* Хедер – лише заголовок і стрілка */}
       <button type="button" className="brandbook-acc__header" onClick={onToggle}>
         <div className="brandbook-acc__title-wrap">
           <h3 className="brandbook-acc__title">{title}</h3>
@@ -76,7 +83,6 @@ export function AccordionItem({
         />
       </button>
 
-      {/* Контент: під хедером — subtitle, картинка, текст */}
       <div
         className="brandbook-acc__content"
         style={{ maxHeight: isOpen ? height : 0 }}
