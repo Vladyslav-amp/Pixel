@@ -3,6 +3,8 @@
 
 .contact-modal {
   position: fixed;
+  max-width: 462px;
+  width: 100%;
   inset: 0;
   z-index: 1000;
   display: grid;
@@ -51,7 +53,8 @@
 }
 
 .contact-form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
   cursor: default;
 
@@ -167,3 +170,32 @@
     transform: translateY(0) scale(1);
   }
 }
+
+/* ---------- INLINE MODE (статичне відображення) ---------- */
+/* ---------- INLINE MODE (статичне відображення) ---------- */
+.contact-modal--inline {
+  position: static;
+  inset: auto;
+  display: block;
+  z-index: 1;
+  height: auto;
+  overflow: visible;
+  animation: none; /* без fadeIn */
+}
+
+.contact-modal--inline .contact-modal__backdrop {
+  display: none !important; /* без затемнення */
+}
+
+.contact-modal--inline .contact-modal__panel {
+  position: static;
+  transform: none;
+  max-width: 100%;
+  width: 100%;
+  box-shadow: none;
+  overflow: visible;
+  opacity: 1;
+  animation: none; /* без panelIn */
+}
+
+

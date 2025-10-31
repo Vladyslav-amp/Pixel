@@ -2,21 +2,24 @@ import React, { useMemo, useState } from 'react';
 import './Branding.scss';
 
 import Header from '../../components/Header/Header.jsx';
-import useActiveSection from '../../hooks/useActiveSection.js';
+import Main from '../Branding/Branding-sections/Main/Main.jsx';
+import Brandbook from './Branding-sections/Brandbook/Brandbook.jsx';
+import Contact from './Branding-sections/Contact/Contact.jsx';
+import Gameover from './Branding-sections/Gameover/Gameover.jsx';
+// import useActiveSection from '../../hooks/useActiveSection.js';
 import useSectionVisible from '../../hooks/useSectionVisible.js';
-import MainButton from './Home-button/Main-Button.jsx';
+import MainButton from '../Home/Home-button/Main-button.jsx';
 import ContactModal from '../../components/ContactModal/ContactModal.jsx';
 
 import { NAV } from '../../constants/home-sections.js';
-import Branding from './Branding-sections/Brandbook/Brandbook.jsx';
 
-export default function Brandbook() {
+export default function Branding() {
   const SECTION_IDS = useMemo(
     () => NAV.filter(item => item.type === 'section').map(s => s.id),
     []
   );
 
-  const activeId = useActiveSection(SECTION_IDS, { threshold: [0.5] });
+  // const activeId = useActiveSection(SECTION_IDS, { threshold: [0.5] });
   const isMainVisible = useSectionVisible('Main', {
     rootMargin: '-72px 0px 0px 0px',
     threshold: 0.01,
@@ -25,13 +28,13 @@ export default function Brandbook() {
   const [isContactOpen, setContactOpen] = useState(false);
 
   return (
-    <section className='header-main'>
-      <div className="header-zone">
-        <div className="header-zone__inner">
-          <Header sections={NAV} activeId={activeId} />
+    <section className='branding-main'>
+      <div className="branding-zone">
+        <div className="branding-zone__inner">
+          <Header sections={NAV}  />
         </div>
         {!isMainVisible && (
-          <div className="header-zone__btn header-zone__btn--relative">
+          <div className="branding-zone__btn branding-zone__btn--relative">
             {!isContactOpen ? (
               <MainButton
                 text="try $0 consultation"
@@ -57,8 +60,11 @@ export default function Brandbook() {
 
       <div className="page__offset" aria-hidden />
 
-      <main className="branding">
-        <Branding id="Branding" />
+      <main className="main">
+        <Main />
+        <Brandbook />
+        <Contact />
+        <Gameover />
       </main>
     </section>
   );

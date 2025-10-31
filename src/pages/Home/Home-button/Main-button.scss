@@ -45,7 +45,7 @@
 }
 
 .main-button--light {
-  background-color: rgba($main-button-background, 10%);
+  background-color: rgba($submain-button-background, 100%);
   color: $main-text-color;
 
   &:hover:not(:disabled) {

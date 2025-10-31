@@ -158,7 +158,6 @@ export default function Header({ sections = [], activeId: activeIdProp }) {
         </div>
       </header>
 
-      {/* кнопка з’являється лише якщо не у верхній секції */}
       {shouldShowButton && (
         <div className="header-zone header-zone--visible">
           <div className="header-zone__btn">
@@ -178,6 +177,7 @@ export default function Header({ sections = [], activeId: activeIdProp }) {
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setContactOpen(false)}
+        mode="modal"
       />
     </>
   );

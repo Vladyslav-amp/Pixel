@@ -1,0 +1,50 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+
+
+
+.main {
+  height: 100%;
+  background-image: url('images/branding-main--bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 55%;
+  display: grid;
+
+  &-block {
+    @include section-padding;
+    @include pageGrid;
+    @include max-width-page;
+    grid-auto-rows: minmax(0, auto);
+    row-gap: 12px;
+    place-items: center;
+    margin-top: 50px;
+
+    & :nth-child(1) {
+      color: $submain-text-color;
+      grid-column: 1 / 4;
+      grid-row: 2;
+      justify-items: center;
+    }
+
+    & :nth-child(2) {
+      color: $submain-text-color;
+      grid-column: 1 / 2;
+      grid-row: 3;
+      justify-items: center;
+    }
+
+    & :nth-child(3) {
+      color: $submain-text-color;
+      grid-column: 1 / -1;
+      grid-row: 4;
+      // justify-items: center;
+
+      & .carousel__dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+      }
+    }
+  }
+}

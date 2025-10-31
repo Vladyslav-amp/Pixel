@@ -1,0 +1,124 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+$shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+
+.carousel {
+  width: 100%;
+  max-width: 312px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.carousel__viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #000;
+  aspect-ratio: 16 / 9;
+  box-shadow: $shadow;
+  cursor: grab;
+
+  &--dragging {
+    cursor: grabbing;
+  }
+}
+
+.carousel__track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.carousel__slide {
+  min-width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: #000;
+}
+
+.carousel__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  &--active {
+    background: #000;
+    transform: scale(1.25);
+  }
+}
+
+.carousel__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.carousel__title {
+  color: $main-text-color;
+  text-align: center;
+  font-family: Archivo;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.carousel__arrow {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.16s ease, opacity 0.16s ease, background 0.16s ease;
+  display: none;
+
+  &:hover {
+    transform: scale(1.06);
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  @include onTablet {
+    display: grid;
+  }
+}

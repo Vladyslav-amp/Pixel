@@ -1,0 +1,145 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+
+$dur: 280ms;
+$ease: cubic-bezier(.25, .8, .25, 1);
+$bg: #0f1216;
+$fg: #e7ebef;
+$muted: #9aa4af;
+$border: rgba(255, 255, 255, .10);
+
+.brandbook-acc {
+  max-width: 462px;
+  width: 100%;
+  border: 1px solid $border;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.80);
+    border-radius: 8px;
+    padding: 16px;
+
+    &--open .brandbook-acc__header {
+      transform: translateY(-10px);
+    }
+
+    &--open .brandbook-acc__title-wrap {
+      transform: translateY(-2px);
+    }
+
+    &--open .brandbook-acc__arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__header {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+    transition: transform $dur $ease, background $dur;
+
+    &:hover {
+      background: rgba(255, 255, 255, .04);
+    }
+  }
+
+  &__title {
+    color: $main-text-color;
+    font-family: $submain-text-font;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    align-self: center;
+  }
+
+  &__subtitle {
+    color: $main-text-color;
+    font-family: $main-text-font;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    align-self: center;
+    transform: translateY(-6px);
+    transition: opacity $dur $ease, transform $dur $ease;
+
+    &--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__title-wrap {
+    transition: transform $dur $ease;
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    transform: rotate(90deg);
+    transition: transform $dur $ease;
+    background: url('data:image/svg+xml;utf8,\
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\
+      <path d="M7 14l5-5 5 5" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      ) center/18px 18px no-repeat;
+    opacity: .9;
+  }
+
+  /* контент розгортається знизу (під хедером) */
+  &__content {
+    overflow: hidden;
+    transition: max-height $dur $ease, opacity $dur $ease;
+  }
+
+  &__inner {
+    display: grid;
+    gap: 8px;
+    opacity: .98;
+    animation: acc-fade $dur $ease both;
+  }
+
+  &__media img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+  }
+
+  &__body p {
+    color: $main-text-color;
+    font-family: $main-text-font;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  @keyframes acc-fade {
+    from {
+      opacity: .2;
+      transform: translateY(-6px);
+    }
+
+    to {
+      opacity: .98;
+      transform: translateY(0);
+    }
+  }
+}
+

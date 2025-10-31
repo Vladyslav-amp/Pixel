@@ -1,0 +1,193 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+
+.site-branding {
+  position: fixed;
+  top: 32px;
+  left: 0;
+  right: 0;
+  place-items: center;
+  z-index: 1100;
+  pointer-events: none;
+
+  @include pageGrid;
+  @include max-width-page;
+  @include section-padding-inline;
+
+  @include onTablet {
+    top: 48px;
+  }
+
+  &__anchor {
+    position: relative;
+    display: inline-block;
+    pointer-events: auto;
+    max-width: 462px;
+    width: 100%;
+    grid-column: 1 / 4;
+
+    @include onTablet {
+      grid-column: 2 / 8;
+    }
+
+    @include onDesktop {
+      grid-column: 3 / 11;
+    }
+  }
+
+  &__pill {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 14px 32px 14px 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    transition: border-radius 0.3s ease;
+
+    & .site-branding__title {
+      margin-inline: auto;
+    }
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 20px;
+    color: $main-text-color;
+    font-family: $submain-text-font;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .site-dropdown {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 1200;
+    pointer-events: none;
+
+    &__panel {
+      display: none;
+      width: 100%;
+      background: #fff;
+      border: 1px solid #e6e6e6;
+      border-top: none;
+      pointer-events: none;
+      border-radius: 0 0 8px 8px;
+      overflow: hidden;
+      transform-origin: top center;
+      transform: translateY(-8px) scaleY(0.95);
+      opacity: 0;
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: auto;
+    }
+
+    &__list {
+      list-style: none;
+      margin: 0;
+      padding: 8px;
+      display: grid;
+      gap: 8px;
+      overflow: auto;
+    }
+
+    &__link {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      font-family: $main-text-font;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      background: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+
+      &:hover {
+        background: #f8f8f8;
+      }
+
+      &.is-active {
+        background: $main-text-color;
+        color: $submain-text-color;
+        border-color: $main-text-color;
+      }
+    }
+  }
+
+  &__anchor.is-open {
+    .site-dropdown__panel {
+      display: block;
+      opacity: 1;
+      transform: translateY(0) scaleY(1);
+      pointer-events: auto;
+    }
+
+    .site-branding__pill {
+      border-radius: 8px 8px 0 0;
+      border-bottom: none;
+    }
+  }
+}
+
+.branding-nav {
+  border: none;
+  background: none;
+}
+
+.branding-nav > svg {
+  width: 16px;
+  height: 16px;
+}
+
+.branding-zone {
+  --base-offset: 90px;
+  --dd-h: 0px;
+  position: fixed;
+  inset: 0 0 auto 0;
+  place-items: center;
+  z-index: 1050;
+  pointer-events: none;
+
+  @include pageGrid;
+  @include max-width-page;
+  @include section-padding-inline;
+
+  @include onTablet {
+  --base-offset: 106px;
+  }
+
+  &__btn {
+    width: 100%;
+    pointer-events: auto;
+    max-width: 462px;
+
+    --shift: calc(var(--base-offset) + var(--dd-h));
+    transform: translateY(var(--shift));
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+
+    grid-column: 1 / 4;
+
+    @include onTablet {
+      grid-column: 2 / 8;
+    }
+
+    @include onDesktop {
+      grid-column: 3 / 11;
+    }
+
+    & button {
+      width: 100%;
+      position: relative;
+      z-index: 1100;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+
+
+.gameover {
+  height: 100%;
+  background-color: $main-text-color;
+
+  &-block {
+    @include section-padding;
+    @include pageGrid;
+    @include max-width-page;
+    grid-auto-rows: minmax(0, auto);
+    row-gap: 12px;
+
+    & :nth-child(1) {
+      grid-column: 1 / 4;
+      grid-row: 1;
+    }
+
+    & :nth-child(2) {
+      grid-column: 3 / 3;
+      grid-row: 2;
+    }
+
+    & :nth-child(3) {
+      grid-column: 1 / 4;
+      grid-row: 4;
+    }
+
+    & :nth-child(4) {
+      grid-column: 3 / 3;
+      grid-row: 5;
+    }
+
+    &__end {
+      margin-top: 250px;
+      &-title {
+        padding: 16px;
+        color: $submain-text-color;
+        text-align: center;
+        font-family: $submain-text-font;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+
+      &-glitch {
+        height: 204px;
+        padding-block-end: 12px;
+      }
+      
+      &-button button {
+        
+        max-width: 462px;
+        width: 100%;
+      }
+    }
+  }
+}
