@@ -14,11 +14,11 @@ export default function Main({ id }) {
     <section id={id} className="main">
       <div className="main-block">
         <div className="main-block__widget">
-          <Widget size="lg" imageSrc="/images/widgets/video.png" text="Check what you need" />
+          <Widget size="lg" imageSrc="/src/assets/images/widgets/video.png" text="Check what you need" />
         </div>
 
         <div className="main-block__widget">
-          <Widget size="sm" imageSrc="/images/widgets/pixel-mate.png" text="Check what you need" />
+          <Widget size="sm" imageSrc="/src/assets/images/widgets/pixel-mate.png" text="Check what you need" />
         </div>
 
         <div className="main-block__widget">

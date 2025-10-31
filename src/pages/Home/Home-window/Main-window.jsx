@@ -17,7 +17,7 @@ export default function MainWindow() {
         <div className="MainWindow-mid">
           <div className="MainWindow-mid__title">
             <span className="MainWindow-mid__title-icon">
-              <img src="./images/main-window-icon.svg" alt="main-window-icon" />
+              <img src="src/assets/images/main-window-icon.svg" alt="main-window-icon" />
             </span>
 
             <h2 className="MainWindow-mid__title-text">

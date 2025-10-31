@@ -9,11 +9,11 @@ export default function Gameover({ id }) {
     <section id={id} className="gameover">
       <div className="gameover-block">
         <div className="gameover-block__widget">
-          <Widget size="lg" imageSrc="/images/widgets/video.png" text="Video Ask AI" />
+          <Widget size="lg" imageSrc="/src/assets/images/widgets/video.png" text="Video Ask AI" />
         </div>
 
         <div className="gameover-block__widget">
-          <Widget size="sm" imageSrc="/images/widgets/pixel-mate.png" text="PixelMate" />
+          <Widget size="sm" imageSrc="/src/assets/images/widgets/pixel-mate.png" text="PixelMate" />
         </div>
 
         <div className="gameover-block__widget">
@@ -38,7 +38,7 @@ export default function Gameover({ id }) {
         </div>
 
         <div className="gameover-block__widget">
-          <Widget size="sm" imageSrc="/images/widgets/older.png" text="PixelMate" />
+          <Widget size="sm" imageSrc="/src/assets/images/widgets/older.png" text="PixelMate" />
         </div>
       </div>
     </section>

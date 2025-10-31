@@ -12,32 +12,32 @@ export default function Main({ id }) {
       <div className="main-top">
         <div className="main-top__widgets">
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc="/images/widgets/ai-agents-chatbots.png" text="AI Agents and chatbots" />
+            <Widget size="sm" imageSrc="src/assets/images/widgets/ai-agents-chatbots.png" text="AI Agents and chatbots" />
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc="/images/widgets/linkedin.png" text="Linkedin" />
+            <Widget size="sm" imageSrc="src/assets/images/widgets/linkedin.png" text="Linkedin" />
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc="/images/widgets/whatsapp.svg" text="WhatsApp" />
+            <Widget size="sm" imageSrc="src/assets/images/widgets/whatsapp.svg" text="WhatsApp" />
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="md" imageSrc="/images/widgets/sites-and-apps.png" text="SITES and APP`s" />
+            <Widget size="md" imageSrc="src/assets/images/widgets/sites-and-apps.png" text="SITES and APP`s" />
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc="/images/widgets/instagram.svg" text="Instagram" />
+            <Widget size="sm" imageSrc="src/assets/images/widgets/instagram.svg" text="Instagram" />
           </div>
 
           <div className="main-top__widgets-widget">
             <ExpandableWidget
-              trigger={{ size: 'sm', imageSrc: '/images/widgets/white-folder.svg', text: 'Social media' }}
+              trigger={{ size: 'sm', imageSrc: 'src/assets/images/widgets/white-folder.svg', text: 'Social media' }}
               items={[
-                { imageSrc: '/images/widgets/facebook.svg', text: 'Facebook', href: 'https://twitter.com/...' },
-                { imageSrc: '/images/widgets/youtube.svg', text: 'YouTube', href: 'https://youtube.com/@...' },
-                { imageSrc: '/images/widgets/tik-tok.svg', text: 'TikTok', href: 'https://tiktok.com/@...' },
+                { imageSrc: 'src/assets/images/widgets/facebook.svg', text: 'Facebook', href: 'https://twitter.com/...' },
+                { imageSrc: 'src/assets/images/widgets/youtube.svg', text: 'YouTube', href: 'https://youtube.com/@...' },
+                { imageSrc: 'src/assets/images/widgets/tik-tok.svg', text: 'TikTok', href: 'https://tiktok.com/@...' },
               ]}
             />
           </div>
@@ -53,19 +53,19 @@ export default function Main({ id }) {
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc="/images/widgets/white-folder.svg" text="About us" />
+            <Widget size="sm" imageSrc="src/assets/images/widgets/white-folder.svg" text="About us" />
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc="/images/widgets/workflow-optimization.png" text="Workflow Optimization" />
+            <Widget size="sm" imageSrc="src/assets/images/widgets/workflow-optimization.png" text="Workflow Optimization" />
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc="/images/widgets/business-automation.png" text="Business Automation" />
+            <Widget size="sm" imageSrc="src/assets/images/widgets/business-automation.png" text="Business Automation" />
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc="/images/widgets/pixel-mate.png" text="PixelMate" />
+            <Widget size="sm" imageSrc="src/assets/images/widgets/pixel-mate.png" text="PixelMate" />
           </div>
 
           <div className='main-top__widgets-widget main-container main-container--desktop'>
@@ -82,34 +82,34 @@ export default function Main({ id }) {
         <div className="main-bottom__widgets">
           <div className="main-bottom__widgets-first">
             <div className="main-bottom__widgets-widget">
-              <Widget size="sm" imageSrc="/images/widgets/pixel-mate.png" text="PixelMate" />
+              <Widget size="sm" imageSrc="src/assets/images/widgets/pixel-mate.png" text="PixelMate" />
             </div>
 
             {/* <div className="main-bottom__widgets-widget"> */}
             <ExpandableWidget
-              trigger={{ size: 'sm', imageSrc: '/images/widgets/white-folder.svg', text: 'Social media' }}
+              trigger={{ size: 'sm', imageSrc: 'src/assets/images/widgets/white-folder.svg', text: 'Social media' }}
               items={[
-                { imageSrc: '/images/widgets/whatsapp.svg', text: 'WhatsApp', href: 'https://facebook.com/...' },
-                { imageSrc: '/images/widgets/instagram.svg', text: 'Instagram', href: 'https://instagram.com/...' },
-                { imageSrc: '/images/widgets/facebook.svg', text: 'Facebook', href: 'https://twitter.com/...' },
-                { imageSrc: '/images/widgets/youtube.svg', text: 'YouTube', href: 'https://youtube.com/@...' },
-                { imageSrc: '/images/widgets/tik-tok.svg', text: 'TikTok', href: 'https://tiktok.com/@...' },
+                { imageSrc: 'src/assets/images/widgets/whatsapp.svg', text: 'WhatsApp', href: 'https://facebook.com/...' },
+                { imageSrc: 'src/assets/images/widgets/instagram.svg', text: 'Instagram', href: 'https://instagram.com/...' },
+                { imageSrc: 'src/assets/images/widgets/facebook.svg', text: 'Facebook', href: 'https://twitter.com/...' },
+                { imageSrc: 'src/assets/images/widgets/youtube.svg', text: 'YouTube', href: 'https://youtube.com/@...' },
+                { imageSrc: 'src/assets/images/widgets/tik-tok.svg', text: 'TikTok', href: 'https://tiktok.com/@...' },
               ]}
             />
             {/* </div> */}
 
             <div className="main-bottom__widgets-widget">
-              <Widget size="sm" imageSrc="/images/widgets/linkedin.png" text="Linkedin" />
+              <Widget size="sm" imageSrc="src/assets/images/widgets/linkedin.png" text="Linkedin" />
             </div>
           </div>
 
           <div className="main-bottom__widgets-second">
             <div className="main-bottom__widgets-widget">
-              <Widget size="sm" imageSrc="/images/widgets/workflow-optimization.png" text="Workflow Optimization" />
+              <Widget size="sm" imageSrc="src/assets/images/widgets/workflow-optimization.png" text="Workflow Optimization" />
             </div>
 
             <div className="main-bottom__widgets-widget">
-              <Widget size="md" imageSrc="/images/widgets/sites-and-apps.png" text="SITES and APP`s" />
+              <Widget size="md" imageSrc="src/assets/images/widgets/sites-and-apps.png" text="SITES and APP`s" />
             </div>
           </div>
 
@@ -117,21 +117,21 @@ export default function Main({ id }) {
             <div className="main-bottom__widgets-widget">
               <Widget
                 size="sm"
-                imageSrc="/images/widgets/uriel-brand.png"
+                imageSrc="src/assets/images/widgets/uriel-brand.png"
                 text="Branding"
-                backImageSrc="/images/widgets/moonlight-brand.png"
+                backImageSrc="src/assets/images/widgets/moonlight-brand.png"
                 double
               />
             </div>
 
             <div className="main-bottom__widgets-widget">
-              <Widget size="sm" imageSrc="/images/widgets/yellow-folder.svg" text="About us" />
+              <Widget size="sm" imageSrc="src/assets/images/widgets/yellow-folder.svg" text="About us" />
             </div>
           </div>
 
           <div className="main-bottom__widgets-four">
             <div className="main-bottom__widgets-widget">
-              <Widget size="sm" imageSrc="/images/widgets/ai-agents-chatbots.png" text="AI Agents and chatbots" />
+              <Widget size="sm" imageSrc="src/assets/images/widgets/ai-agents-chatbots.png" text="AI Agents and chatbots" />
             </div>
           </div>
         </div>

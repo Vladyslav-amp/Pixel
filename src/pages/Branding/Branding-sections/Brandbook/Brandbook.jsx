@@ -5,9 +5,9 @@ import { Accordion, AccordionItem } from "../../BrandingAccordion/BrandingAccord
 import GlitchEffect from '../../Effects/GlitchEffect.jsx'
 
 import Carousel from '../../../../components/Carousel/Carousel.jsx';
-import img1 from "../../../../../public/images/widgets/moonlight-brand.png";
-import img2 from "../../../../../public/images/widgets/moonlight-brand.png";
-import img3 from "../../../../../public/images/widgets/moonlight-brand.png";
+import img1 from "/src/assets/images/widgets/moonlight-brand.png";
+import img2 from "/src/assets/images/widgets/moonlight-brand.png";
+import img3 from "/src/assets/images/widgets/moonlight-brand.png";
 
 
 export default function Brandbook({ id }) {
@@ -23,7 +23,7 @@ export default function Brandbook({ id }) {
               title="Brandbook"
               subtitle="Every business tells a story. We turn it into a visual language."
               media={
-                <img src="/images/widgets/accordion.png" alt="Brand preview" />
+                <img src="src/assets/images/widgets/accordion.png" alt="Brand preview" />
               }
             >
               <p>The Pixel brandbook isn’t just a guide — it’s your brand’s digital DNA.</p>
@@ -73,15 +73,15 @@ export default function Brandbook({ id }) {
         </div>
 
         <div className="brandbook-block__widget">
-          <Widget size="sm" imageSrc="/images/widgets/video.png" text="Pixel vs Traditional" />
+          <Widget size="sm" imageSrc="src/assets/images/widgets/video.png" text="Pixel vs Traditional" />
         </div>
 
         <div className="brandbook-block__widget">
-          <Widget size="sm" imageSrc="/images/widgets/white-folder.svg" text="See examples" />
+          <Widget size="sm" imageSrc="src/assets/images/widgets/white-folder.svg" text="See examples" />
         </div>
 
         <div className="brandbook-block__widget">
-          <Widget size="sm" imageSrc="/images/widgets/pixel-mate.png" text="PixelMate" />
+          <Widget size="sm" imageSrc="src/assets/images/widgets/pixel-mate.png" text="PixelMate" />
         </div>
       </div>
     </section>

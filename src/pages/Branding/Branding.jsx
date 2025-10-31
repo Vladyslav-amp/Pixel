@@ -28,7 +28,7 @@ export default function Branding() {
   const [isContactOpen, setContactOpen] = useState(false);
 
   return (
-    <section className='branding-main'>
+    <section className="branding-main" id="branding">
       <div className="branding-zone">
         <div className="branding-zone__inner">
           <Header sections={NAV}  />

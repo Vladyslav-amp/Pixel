@@ -93,11 +93,11 @@ export default function Reviews({ id }) {
         </article>
 
         <div className="reviews-widgets reviews-widgets--first">
-          <Widget size="sm" imageSrc="/images/widgets/yellow-folder.svg" text="About us" />
+          <Widget size="sm" imageSrc="src/assets/images/widgets/yellow-folder.svg" text="About us" />
         </div>
 
         <div className="reviews-widgets reviews-widgets--second">
-          <Widget size="sm" imageSrc="/images/widgets/pixel-mate.png" text="PixelMate" />
+          <Widget size="sm" imageSrc="src/assets/images/widgets/pixel-mate.png" text="PixelMate" />
         </div>
       </div>
     </section>

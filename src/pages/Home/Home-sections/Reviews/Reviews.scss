@@ -19,7 +19,7 @@
     left: 0;
     width: 100%;
     height: 65%;
-    background: url('images/reviews-background.png') center/cover no-repeat;
+    background: url('../../../../assets/images/reviews-background.png') center/cover no-repeat;
     z-index: -1;
 
     @include onTablet {
@@ -198,7 +198,7 @@
         }
 
         &--uriel {
-          background-image: url('images/testimonials-yellow.png');
+          background-image: url('../../../../assets/images/testimonials-yellow.png');
           background-repeat: no-repeat;
           // background-size: 150% 130%;
           background-size: cover;
