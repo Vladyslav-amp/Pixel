@@ -2,9 +2,9 @@ import React from "react";
 import "./Main.scss";
 import Widget from "../../../../components/Widget/Widget.jsx";
 import Carousel from '../../../../components/Carousel/Carousel.jsx';
-import img1 from "../../../../../public/images/widgets/accordion.png";
-import img2 from "../../../../../public/images/widgets/accordion.png";
-import img3 from "../../../../../public/images/widgets/accordion.png";
+import img1 from "@/assets/images/widgets/accordion.png";
+import img2 from "@/assets/images/widgets/accordion.png";
+import img3 from "@/assets/images/widgets/accordion.png";
 
 export default function Main({ id }) {
 

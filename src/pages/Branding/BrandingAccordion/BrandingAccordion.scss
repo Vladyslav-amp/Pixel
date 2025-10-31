@@ -130,6 +130,15 @@ $border: rgba(255, 255, 255, .10);
     line-height: normal;
   }
 
+  &__body ul, li{
+    color: $main-text-color;
+    font-family: $main-text-font;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
   @keyframes acc-fade {
     from {
       opacity: .2;

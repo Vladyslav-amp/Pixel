@@ -10,7 +10,7 @@ export function Accordion({ children, defaultOpen = 0 }) {
       {items.map((child, idx) =>
         cloneElement(child, {
           _idx: idx,
-          total: items.length, // передаємо загальну кількість пунктів
+          total: items.length,
           isOpen: openIndex === idx,
           onToggle: () => setOpenIndex((p) => (p === idx ? -1 : idx)),
         })
@@ -21,65 +21,80 @@ export function Accordion({ children, defaultOpen = 0 }) {
 
 export function AccordionItem({
   title,
-  subtitle,   // тепер показуємо тільки після відкриття
+  subtitle,
   media,
   children,
   isOpen,
   onToggle,
-
 }) {
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
   const [height, setHeight] = useState(0);
 
+  // ⚡ прапорець, щоб не скролило при першому рендері
+  const hasInteracted = useRef(false);
+  const prevOpen = useRef(false);
+
+  // оновлення висоти контенту
   useEffect(() => {
-  function updateHeight() {
-    if (contentRef.current) {
-      setHeight(contentRef.current.scrollHeight);
+    function updateHeight() {
+      if (contentRef.current) {
+        setHeight(contentRef.current.scrollHeight);
+      }
     }
-  }
 
-  if (isOpen) {
-    updateHeight();
-    const timer = setTimeout(updateHeight, 400);
-    window.addEventListener("resize", updateHeight);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", updateHeight);
-    };
-  }
-}, [isOpen, children, media]);
+    if (isOpen) {
+      updateHeight();
+      const timer = setTimeout(updateHeight, 400);
+      window.addEventListener("resize", updateHeight);
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("resize", updateHeight);
+      };
+    }
+  }, [isOpen, children, media]);
 
+  // прокрутка тільки після взаємодії
   useEffect(() => {
-  if (isOpen && sectionRef.current) {
-    setTimeout(() => {
-      const headerOffset = 80;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      const offsetBottom = rect.top + scrollY - headerOffset - 16;
+    if (isOpen && sectionRef.current && hasInteracted.current && !prevOpen.current) {
+      setTimeout(() => {
+        const headerOffset = 80; // висота фіксованого меню
+        const rect = sectionRef.current.getBoundingClientRect();
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        const viewportHeight = window.innerHeight;
 
-      window.scrollTo({
-        top: offsetBottom,
-        behavior: "smooth",
-      });
-    }, 350);
-  }
-}, [isOpen]);
+        // позиція для центру акордеону
+        const scrollToY =
+          scrollY + rect.top + rect.height / 2 - viewportHeight / 2 - headerOffset / 2;
 
+        window.scrollTo({
+          top: scrollToY,
+          behavior: "smooth",
+        });
+      }, 400);
+    }
+    prevOpen.current = isOpen;
+  }, [isOpen]);
+
+  const handleToggle = () => {
+    hasInteracted.current = true; // 🔹 тепер скролимо тільки після кліку користувача
+    onToggle();
+  };
 
   return (
     <section
       ref={sectionRef}
       className={`brandbook-acc__item ${isOpen ? "brandbook-acc__item--open" : ""}`}
     >
-      <button type="button" className="brandbook-acc__header" onClick={onToggle}>
+      <button type="button" className="brandbook-acc__header" onClick={handleToggle}>
         <div className="brandbook-acc__title-wrap">
           <h3 className="brandbook-acc__title">{title}</h3>
         </div>
         <span
           aria-hidden
-          className={`brandbook-acc__arrow ${isOpen ? "brandbook-acc__arrow--up" : "brandbook-acc__arrow--down"
-            }`}
+          className={`brandbook-acc__arrow ${
+            isOpen ? "brandbook-acc__arrow--up" : "brandbook-acc__arrow--down"
+          }`}
         />
       </button>
 
@@ -90,8 +105,9 @@ export function AccordionItem({
         <div ref={contentRef} className="brandbook-acc__inner">
           {subtitle && (
             <p
-              className={`brandbook-acc__subtitle ${isOpen ? "brandbook-acc__subtitle--visible" : ""
-                }`}
+              className={`brandbook-acc__subtitle ${
+                isOpen ? "brandbook-acc__subtitle--visible" : ""
+              }`}
             >
               {subtitle}
             </p>

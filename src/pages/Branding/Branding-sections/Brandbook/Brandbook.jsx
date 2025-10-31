@@ -36,29 +36,25 @@ export default function Brandbook({ id }) {
             </AccordionItem>
 
             <AccordionItem title="WHAT PROBLEMS DOES A BRANDBOOK SOLVE?">
-              <p>
                 <ul><b>Without a brandbook:</b>
                   <li>Inconsistent visuals and communication</li>
                   <li>Lack of brand recognition</li>
                   <li>Confusion across teams and agencies</li>
                   <li>Wasted time and budget on misaligned assets</li>
                 </ul>
-              </p>
               <br />
-              <p>
                 <ul><b>With a Pixel brandbook:</b>
                   <li>Clear visual system across all channels</li>
                   <li>Seamless collaboration between designers, marketers, and developers</li>
                   <li>Unified voice and style across platforms</li>
                   <li>Customers instantly recognize and remember your brand</li>
                 </ul>
-              </p>
+
             </AccordionItem>
 
             <AccordionItem title="Our edge: Brandbook + AI" subtitle="Pixel Brandbook = Visual System + AI Agent">
-              <p>
-                We go beyond the traditional. Every brandbook we 
-                deliver comes with a custom-trained AI agent that:
+                <p>We go beyond the traditional. Every brandbook we 
+                deliver comes with a custom-trained AI agent that:</p>
                 <ul>
                   <li>Knows your visual style, mission, tone, and audience</li>
                   <li>Generates visuals that follow your brand rules</li>
@@ -67,8 +63,7 @@ export default function Brandbook({ id }) {
                   <li>Adapts to your evolving business needs</li>
                 </ul>
                 <br />
-                This AI is infused with your brand's core.More than a document — it’s your brand’s operating system.
-              </p>
+                <p>This AI is infused with your brand's core.More than a document — it’s your brand’s operating system.</p>
             </AccordionItem>
           </Accordion>
         </div>
