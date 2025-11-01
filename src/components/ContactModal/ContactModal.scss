@@ -14,15 +14,6 @@
   animation: fadeIn .25s ease forwards;
   overflow: hidden;
 
-  // &--below {
-  //   position: absolute;
-  //   inset: unset;
-  //   top: 235px;
-  //   left: 0;
-  //   right: 0;
-  //   z-index: 10;
-  // }
-
   &__backdrop {
     position: absolute;
     inset: 0;
