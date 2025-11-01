@@ -11,6 +11,10 @@
   background-position: center;
   background-size: cover;
 
+  @include onDesktop {
+    height: 100vh;
+  }
+
   // & ::before {
   //   content: "";
   //   position: absolute;
@@ -31,11 +35,18 @@
     row-gap: 12px;
     grid-column: 1 / 4;
 
+    @include onDesktop {
+      row-gap: 48px;
+    }
+
     &__top {
       display: flex;
       flex-direction: column;
       gap: 10px;
       padding: 16px;
+      max-width: 462px;
+      width: 100%;
+      margin: 0 auto;
 
       &-title {
         color: #FFF;
@@ -46,7 +57,7 @@
         font-weight: 400;
         line-height: normal;
         text-transform: uppercase;
-        max-width: 60%;
+        // max-width: 60%;
         margin: 0 auto;
       }
 
@@ -81,21 +92,34 @@
         grid-column: 3 / 7;
         grid-row: 2;
       }
+
+      @include onDesktop {
+        grid-column: 4 / 10;
+      }
     }
 
     & :nth-child(2) {
       grid-column: 1 / -1;
+      justify-items: center;
       grid-row: 2;
 
       @include onTablet {
         grid-column: 1 / 6;
         grid-row: 3;
       }
+
+      @include onDesktop {
+        grid-column: 1 / 6;
+      }
     }
 
     & :nth-child(3) {
       grid-column: 5 / -1;
       grid-row: 1;
+
+      @include onDesktop {
+        grid-column: 8 / 13;
+      }
     }
   }
 }

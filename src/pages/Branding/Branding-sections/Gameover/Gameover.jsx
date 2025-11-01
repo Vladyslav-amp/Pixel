@@ -8,41 +8,67 @@ import gameover from '@/assets/images/widgets/older.png';
 
 export default function Gameover({ id }) {
   return (
-    <section id={id} className="gameover">
-      <div className="gameover-block">
-        <div className="gameover-block__widget">
-          <Widget size="lg" imageSrc="/src/assets/images/widgets/video.png" text="Video Ask AI" />
+    <>
+      <section id={id} className="gameover">
+        <div className="gameover-block">
+          <div className="gameover-block__widget">
+            <Widget size="lg" imageSrc="/src/assets/images/widgets/video.png" text="Video Ask AI" />
+          </div>
+
+          <div className="gameover-block__widget">
+            <Widget size="sm" imageSrc="/src/assets/images/widgets/pixel-mate.png" text="PixelMate" />
+          </div>
+
+          <div className="gameover-block__widget">
+            <div className="gameover-block__end">
+              <h2 className="gameover-block__end-title">
+                game over
+              </h2>
+
+              <div className="gameover-block__end-glitch">
+                <GlitchEffect
+                  glitchSpeed={50}
+                  centerVignette={true}
+                  outerVignette={false}
+                  smooth={true}
+                />
+              </div>
+
+              <div className="gameover-block__end-button">
+                <MainButton text="RESTART" variant="light" />
+              </div>
+            </div>
+          </div>
+
+          <div className="gameover-block__widget">
+            <Widget size="sm" imageSrc={gameover} text="PixelMate" />
+          </div>
+        </div>
+      </section>
+
+      <section id={id} className="gameover-second">
+        <div className="gameover-second__bg">
+          <GlitchEffect
+            glitchSpeed={50}
+            centerVignette
+            outerVignette={false}
+            smooth
+          />
         </div>
 
-        <div className="gameover-block__widget">
-          <Widget size="sm" imageSrc="/src/assets/images/widgets/pixel-mate.png" text="PixelMate" />
-        </div>
-
-        <div className="gameover-block__widget">
-          <div className="gameover-block__end">
-            <h2 className="gameover-block__end-title">
-              game over
-            </h2>
-
-            <div className="gameover-block__end-glitch">
-              <GlitchEffect
-                glitchSpeed={50}
-                centerVignette={true}
-                outerVignette={false}
-                smooth={true}
-              />
-            </div>
-
-            <div className="gameover-block__end-button">
-              <MainButton text="RESTART" variant="light"/>
-            </div>
+        <div className="gameover-second__content">
+          <h2 className="gameover-second__title">GAME OVER</h2>
+          <div className="gameover-second__button">
+            <MainButton text="RESTART" variant="light" />
           </div>
         </div>
 
-        <div className="gameover-block__widget">
-          <Widget size="sm" imageSrc={gameover} text="PixelMate" />
+        <div className="gameover-second__content">
+          <div className="gameover-second__widget">
+            <Widget size="sm" imageSrc={gameover} text="Help me please" />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

@@ -2,6 +2,8 @@ import React from "react";
 import "./Reviews.scss";
 import Widget from "../../../../components/Widget/Widget.jsx";
 import AnimatedMenuIcon from '../../../../components/Icons/Icon.jsx';
+import pixelMate from '@/assets/images/widgets/pixel-mate.png';
+import aboutUs from '@/assets/images/widgets/yellow-folder.svg';
 
 export default function Reviews({ id }) {
   const videoJanice = "/video/janice.mp4";
@@ -93,11 +95,11 @@ export default function Reviews({ id }) {
         </article>
 
         <div className="reviews-widgets reviews-widgets--first">
-          <Widget size="sm" imageSrc="src/assets/images/widgets/yellow-folder.svg" text="About us" />
+          <Widget size="sm" imageSrc={aboutUs} text="About us" />
         </div>
 
         <div className="reviews-widgets reviews-widgets--second">
-          <Widget size="sm" imageSrc="src/assets/images/widgets/pixel-mate.png" text="PixelMate" />
+          <Widget size="sm" imageSrc={pixelMate} text="PixelMate" />
         </div>
       </div>
     </section>

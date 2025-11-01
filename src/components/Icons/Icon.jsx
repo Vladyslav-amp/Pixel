@@ -32,7 +32,7 @@ export default function AnimatedMenuIcon({
   open = false,
   size = 48,
   color = "#0C0C0B",
-  r = 0.9,
+  r = 1,
   className = "",
 }) {
   const target = open ? CLOSE_POINTS : OPEN_POINTS;

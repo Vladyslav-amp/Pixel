@@ -100,16 +100,12 @@ export default function Header({ sections = [], activeId: activeIdProp }) {
     setContactOpen(true);
   }, [open, isContactOpen]);
 
-  // Якщо відкривається меню → закрити форму
   useEffect(() => {
     if (open && isContactOpen) {
       setContactOpen(false);
     }
   }, [open, isContactOpen]);
 
-  // Кнопку показуємо лише якщо:
-  // — користувач прокрутив нижче Main
-  // — або меню / форма відкриті
   const shouldShowButton = !isMainVisible || open || isContactOpen;
 
   return (

@@ -1,5 +1,6 @@
 import MainButton from '../Home-button/Main-button';
 import './Main-window.scss'
+import iconMain from '@/assets/images/main-window-icon.svg';
 
 
 export default function MainWindow() {
@@ -17,7 +18,7 @@ export default function MainWindow() {
         <div className="MainWindow-mid">
           <div className="MainWindow-mid__title">
             <span className="MainWindow-mid__title-icon">
-              <img src="src/assets/images/main-window-icon.svg" alt="main-window-icon" />
+              <img src={iconMain} alt="main-window-icon" />
             </span>
 
             <h2 className="MainWindow-mid__title-text">

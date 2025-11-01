@@ -31,10 +31,6 @@ export default function Contact({ id }) {
         <div className="contact-block__widget contact-block__widget--tablet">
           <Widget size="lg" imageSrc="/src/assets/images/widgets/video.png" text="Video Ask AI" />
         </div>
-
-        {/* <div className="brandbook-block__widget">
-          <Widget size="sm" imageSrc="/images/widgets/video.png" text="PixelMate" />
-        </div> */}
       </div>
     </section>
   );

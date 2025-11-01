@@ -8,6 +8,11 @@ $fg: #e7ebef;
 $muted: #9aa4af;
 $border: rgba(255, 255, 255, .10);
 
+// .brandbook-acc__item {
+//   overflow-anchor: none;
+// }
+
+
 .brandbook-acc {
   max-width: 462px;
   width: 100%;
@@ -21,7 +26,7 @@ $border: rgba(255, 255, 255, .10);
   &__item {
     position: relative;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.80);
+    background: rgba(255, 255, 255, 1);
     border-radius: 8px;
     padding: 16px;
 
@@ -74,7 +79,7 @@ $border: rgba(255, 255, 255, .10);
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    align-self: center;
+    align-self: start;
     transform: translateY(-6px);
     transition: opacity $dur $ease, transform $dur $ease;
 
@@ -101,14 +106,14 @@ $border: rgba(255, 255, 255, .10);
     opacity: .9;
   }
 
-  /* контент розгортається знизу (під хедером) */
   &__content {
     overflow: hidden;
     transition: max-height $dur $ease, opacity $dur $ease;
   }
 
   &__inner {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
     opacity: .98;
     animation: acc-fade $dur $ease both;
