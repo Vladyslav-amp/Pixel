@@ -3,6 +3,8 @@ import "./Gameover.scss";
 import Widget from "../../../../components/Widget/Widget.jsx";
 import GlitchEffect from '../../Effects/GlitchEffect.jsx'
 import MainButton from "../../../Home/Home-button/Main-button.jsx";
+import video from '@/assets/images/widgets/video.png';
+import pixelMate from '@/assets/images/widgets/pixel-mate.png';
 
 import gameover from '@/assets/images/widgets/older.png';
 
@@ -12,11 +14,11 @@ export default function Gameover({ id }) {
       <section id={id} className="gameover">
         <div className="gameover-block">
           <div className="gameover-block__widget">
-            <Widget size="lg" imageSrc="/src/assets/images/widgets/video.png" text="Video Ask AI" />
+            <Widget size="lg" imageSrc={video} text="Video Ask AI" />
           </div>
 
           <div className="gameover-block__widget">
-            <Widget size="sm" imageSrc="/src/assets/images/widgets/pixel-mate.png" text="PixelMate" />
+            <Widget size="sm" imageSrc={pixelMate} text="PixelMate" />
           </div>
 
           <div className="gameover-block__widget">

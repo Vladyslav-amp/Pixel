@@ -2,6 +2,7 @@ import React from "react";
 import "./Contact.scss";
 import Widget from "../../../../components/Widget/Widget.jsx";
 import ContactModal from '../../../../components/ContactModal/ContactModal.jsx';
+import video from '@/assets/images/widgets/video.png';
 
 export default function Contact({ id }) {
   return (
@@ -29,7 +30,7 @@ export default function Contact({ id }) {
         </div>
 
         <div className="contact-block__widget contact-block__widget--tablet">
-          <Widget size="lg" imageSrc="/src/assets/images/widgets/video.png" text="Video Ask AI" />
+          <Widget size="lg" imageSrc={video} text="Video Ask AI" />
         </div>
       </div>
     </section>
