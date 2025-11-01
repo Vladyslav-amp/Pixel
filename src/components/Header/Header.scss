@@ -104,8 +104,9 @@
       padding: 12px 14px;
       font-family: $main-text-font;
       border-radius: 8px;
-      border: 1px solid #eee;
-      background: #fff;
+      border: 1px solid rgba(12, 12, 11, 0.20);
+      background: #F3F3F2;
+      background: $submain-text-color;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s ease, color 0.2s ease;
@@ -142,7 +143,7 @@
   background: none;
 }
 
-.header-nav > svg {
+.header-nav>svg {
   width: 16px;
   height: 16px;
 }
@@ -161,7 +162,7 @@
   @include section-padding-inline;
 
   @include onTablet {
-  --base-offset: 106px;
+    --base-offset: 106px;
   }
 
   &__btn {
