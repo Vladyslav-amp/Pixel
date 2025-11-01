@@ -96,6 +96,22 @@
       display: grid;
       gap: 8px;
       overflow: auto;
+
+      & :nth-child(9) {
+        & .site-dropdown__link {
+        background: rgba(12, 12, 11, 0.20) !important;
+        border: 0;
+        }
+      }
+    }
+
+    &__item {
+
+      button:link,
+      button:visited,
+      button:focus {
+        color: $main-text-color;
+      }
     }
 
     &__link {
@@ -104,6 +120,7 @@
       padding: 12px 14px;
       font-family: $main-text-font;
       border-radius: 8px;
+      color: $main-text-color;
       border: 1px solid rgba(12, 12, 11, 0.20);
       background: #F3F3F2;
       font-weight: 600;
@@ -112,12 +129,6 @@
 
       &:hover {
         background: #f8f8f8;
-      }
-
-      &:link,
-      &:visited,
-      &:focus  {
-        color: $main-text-color;
       }
 
       &.is-active {

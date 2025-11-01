@@ -3,7 +3,7 @@
 
 .contact-modal {
   position: fixed;
-  max-width: 462px;
+  // max-width: 462px;
   width: 100%;
   inset: 0;
   z-index: 1000;
@@ -121,6 +121,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
     border: none;
     border-radius: 8px;
     background: $main-text-color;
@@ -132,6 +133,10 @@
     line-height: normal;
     text-transform: uppercase;
     text-align: center;
+
+    &:hover {
+      opacity: .9;
+    }
 
     &:disabled {
       opacity: .6;
@@ -172,8 +177,6 @@
   }
 }
 
-/* ---------- INLINE MODE (статичне відображення) ---------- */
-/* ---------- INLINE MODE (статичне відображення) ---------- */
 .contact-modal--inline {
   position: static;
   inset: auto;
@@ -181,11 +184,13 @@
   z-index: 1;
   height: auto;
   overflow: visible;
-  animation: none; /* без fadeIn */
+  animation: none;
+  /* без fadeIn */
 }
 
 .contact-modal--inline .contact-modal__backdrop {
-  display: none !important; /* без затемнення */
+  display: none !important;
+  /* без затемнення */
 }
 
 .contact-modal--inline .contact-modal__panel {
@@ -196,7 +201,49 @@
   box-shadow: none;
   overflow: visible;
   opacity: 1;
-  animation: none; /* без panelIn */
+  animation: none;
+  /* без panelIn */
 }
 
 
+.contact-form__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  input[type='checkbox'] {
+    margin-top: 0.2rem;
+    accent-color: var(--color-primary, #007bff);
+  }
+
+  span {
+    color: $submain-text-color;
+    font-family: $main-text-font;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  a {
+    color: $submain-text-color;
+    font-family: $main-text-font;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.contact-form__input.is-invalid,
+.contact-form__textarea.is-invalid {
+  border: 1px solid #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+  background: rgba(255, 240, 240, 0.9);
+}
+
+.contact-form__input.is-invalid:focus,
+.contact-form__textarea.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.4);
+}

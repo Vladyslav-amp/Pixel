@@ -1,4 +1,3 @@
-// ContactModal.jsx
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import './ContactModal.scss';
@@ -7,14 +6,14 @@ export default function ContactModal({
   isOpen,
   onClose,
   position = 'center',
-  inline = false, // 👈 новий проп для статичного режиму
+  inline = false,
 }) {
   const dialogRef = useRef(null);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState('');
   const [ok, setOk] = useState(false);
+  const [invalidFields, setInvalidFields] = useState([]);
 
-  // ====== Закриття по ESC (тільки для модалки) ======
   useEffect(() => {
     if (inline) return;
     const onKeyDown = (e) => e.key === 'Escape' && onClose();
@@ -22,10 +21,8 @@ export default function ContactModal({
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [inline, isOpen, onClose]);
 
-  // ====== Блокування скролу (тільки для модалки) ======
   useEffect(() => {
     if (inline) return;
-
     const html = document.documentElement;
     const scrollBarWidth = window.innerWidth - html.clientWidth;
 
@@ -43,60 +40,55 @@ export default function ContactModal({
     };
   }, [inline, isOpen]);
 
-  // ====== Якщо inline — завжди показуємо; якщо модалка — лише коли isOpen ======
   if (!inline && !isOpen) return null;
 
-  // ====== Регулярки для валідації ======
   const nameRegex = /^[a-zA-ZÀ-ž\s'-]{2,50}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\+?[0-9\s\-()]{6,20}$/;
 
-  // ====== Обробник відправки форми ======
   async function handleSubmit(e) {
     e.preventDefault();
+    if (pending) return;
+
     setPending(true);
     setError('');
     setOk(false);
+    setInvalidFields([]);
 
     const form = new FormData(e.currentTarget);
     const payload = Object.fromEntries(form.entries());
-    const { name, email, phone } = payload;
+    const { name, email, phone, agree } = payload;
 
-    if (!nameRegex.test(name)) {
+    const invalid = [];
+    if (!nameRegex.test(name)) invalid.push('name');
+    if (!emailRegex.test(email)) invalid.push('email');
+    if (phone && !phoneRegex.test(phone)) invalid.push('phone');
+    if (!agree) setError('You must agree to the Personal Information Protection Policy.');
+
+    if (invalid.length > 0 || !agree) {
+      setInvalidFields(invalid);
+      if (!error) setError('Please fill in all required fields correctly.');
       setPending(false);
-      return setError('Please enter a valid name (letters only).');
-    }
-    if (!emailRegex.test(email)) {
-      setPending(false);
-      return setError('Please enter a valid email address.');
-    }
-    if (phone && !phoneRegex.test(phone)) {
-      setPending(false);
-      return setError('Please enter a valid phone number.');
+      return;
     }
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error('Failed to send');
+      await new Promise((r) => setTimeout(r, 1000));
+
       setOk(true);
       e.currentTarget.reset();
-    } catch {
-      setError('Something went wrong. Please try again.');
+
+      setTimeout(() => setOk(false), 3000);
     } finally {
       setPending(false);
     }
   }
 
-  // ====== Розмітка ======
+
   const panel = (
     <div
-      className={`contact-modal ${
-        position === 'below' ? 'contact-modal--below' : ''
-      } ${inline ? 'contact-modal--inline' : ''}`}
+      className={`contact-modal ${position === 'below' ? 'contact-modal--below' : ''
+        } ${inline ? 'contact-modal--inline' : ''}`}
       role={inline ? 'region' : 'dialog'}
       aria-modal={inline ? undefined : 'true'}
     >
@@ -108,7 +100,8 @@ export default function ContactModal({
             <input
               name="name"
               type="text"
-              className="contact-form__input"
+              className={`contact-form__input ${invalidFields.includes('name') ? 'is-invalid' : ''
+                }`}
               placeholder="Name"
               required
             />
@@ -119,7 +112,8 @@ export default function ContactModal({
             <input
               name="phone"
               type="tel"
-              className="contact-form__input"
+              className={`contact-form__input ${invalidFields.includes('phone') ? 'is-invalid' : ''
+                }`}
               placeholder="Phone number"
             />
           </label>
@@ -129,7 +123,8 @@ export default function ContactModal({
             <input
               name="email"
               type="email"
-              className="contact-form__input"
+              className={`contact-form__input ${invalidFields.includes('email') ? 'is-invalid' : ''
+                }`}
               placeholder="Your email"
               required
             />
@@ -143,6 +138,21 @@ export default function ContactModal({
               className="contact-form__textarea"
               placeholder="Info about your firm"
             />
+          </label>
+
+          {/* ✅ Чекбокс без підсвічування */}
+          <label className="contact-form__checkbox">
+            <input type="checkbox" name="agree" />
+            <span>
+              I agree to the{' '}
+              <a
+                href="/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Personal Information Protection Policy
+              </a>.
+            </span>
           </label>
 
           {error && <p className="contact-form__error">{error}</p>}
@@ -164,6 +174,5 @@ export default function ContactModal({
     </div>
   );
 
-  // ====== Віддаємо або портал, або inline ======
   return inline ? panel : createPortal(panel, document.body);
 }

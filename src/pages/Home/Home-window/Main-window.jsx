@@ -1,9 +1,14 @@
+import React, { useState } from 'react';
+
 import MainButton from '../Home-button/Main-button';
 import './Main-window.scss'
 import iconMain from '@/assets/images/main-window-icon.svg';
+import ContactModal from '../../../components/ContactModal/ContactModal.jsx';
 
 
 export default function MainWindow() {
+    const [isContactOpen, setContactOpen] = useState(false);
+  
   return (
     <div id="MainWindow" className="MainWindow">
       <div className="MainWindow__container">
@@ -36,7 +41,12 @@ export default function MainWindow() {
         <div className="MainWindow-bottom">
           <div className="MainWindow-bottom__buttons-block">
             <MainButton text="Start" variant="light" />
-            <MainButton text="TRY 0$ CONSULTATION" variant="dark" />
+            <MainButton text="TRY 0$ CONSULTATION" variant="dark" onClick={() => setContactOpen(true)}/>
+              <ContactModal
+                            isOpen={isContactOpen}
+                            onClose={() => setContactOpen(false)}
+                            position="below"
+                          />
           </div>
         </div>
       </div>

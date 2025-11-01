@@ -39,7 +39,7 @@ export default function Main({ id }) {
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="md" imageSrc={sites} text="SITES and APP`s" />
+            <Widget size="md" imageSrc={sites} text="Sites and App`s" />
           </div>
 
           <div className="main-top__widgets-widget">
