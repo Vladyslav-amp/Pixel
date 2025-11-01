@@ -2,6 +2,7 @@
 @use "/src/styles/variables/variables.scss" as *;
 
 .contact-modal {
+  @include section-padding-inline;
   position: fixed;
   // max-width: 462px;
   width: 100%;
