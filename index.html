@@ -10,11 +10,11 @@
 
 <body>
   <div id="root"></div>
-</body>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'auto';
+  </script>
 
-<script type="module" src="/src/main.jsx"></script>
-<script>
-  if ('scrollRestoration' in history) history.scrollRestoration = 'auto';
-</script>
+</body>
 
 </html>
