@@ -1,5 +1,6 @@
 @use "@/styles/mixins/mixins" as *;
 
+
 .main {
   &-top {
     @include section-padding;
