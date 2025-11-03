@@ -15,7 +15,7 @@ export default function Main({ id }) {
   const slides = [img1, img2, img3];
 
   return (
-    <section id={id} className="main">
+    <section id={id} className="main main-branding">
       <div className="main-block">
         <div className="main-block__widget">
           <Widget size="lg" imageSrc={check} text="Check what you need" />

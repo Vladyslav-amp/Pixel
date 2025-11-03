@@ -20,6 +20,7 @@ import businessAutomation from '@/assets/images/widgets/business-automation.png'
 import yellowFolder from '@/assets/images/widgets/yellow-folder.svg';
 import urielBrand from '@/assets/images/widgets/uriel-brand.png';
 import janiceBrand from '@/assets/images/widgets/moonlight-brand.png';
+import socialFolder from '@/assets/images/widgets/social-folder.webp';
 
 export default function Main({ id }) {
   return (
@@ -48,7 +49,7 @@ export default function Main({ id }) {
 
           <div className="main-top__widgets-widget">
             <ExpandableWidget
-              trigger={{ size: 'sm', imageSrc: whiteFolder, text: 'Social media' }}
+              trigger={{ size: 'sm', imageSrc: socialFolder, text: 'Social media' }}
               items={[
                 { imageSrc: facebook, text: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61583309151807' },
                 { imageSrc: youtube, text: 'YouTube', href: 'https://www.youtube.com/channel/UCdG3plbGNkRPiwRZfXY01Fg' },
@@ -103,7 +104,7 @@ export default function Main({ id }) {
             </div>
 
             <ExpandableWidget
-              trigger={{ size: 'sm', imageSrc: whiteFolder, text: 'Social media' }}
+              trigger={{ size: 'sm', imageSrc: socialFolder, text: 'Social media' }}
               items={[
                 { imageSrc: whatsapp, text: 'WhatsApp', href: 'https://facebook.com/...' },
                 { imageSrc: instagram, text: 'Instagram', href: 'https://instagram.com/...' },
