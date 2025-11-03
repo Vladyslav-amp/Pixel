@@ -25,9 +25,11 @@
   }
 
   &-block {
-    @include section-padding;
     @include pageGrid;
     @include max-width-page;
+    @include section-padding;
+    position: relative;
+    overflow: hidden;
     grid-auto-rows: minmax(0, auto);
     row-gap: 12px;
     place-items: center;
@@ -67,6 +69,7 @@
     }
 
     & :nth-child(4) {
+      cursor: pointer;
       grid-column: 2 / 3;
       grid-row: 3;
 

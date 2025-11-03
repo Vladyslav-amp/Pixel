@@ -2,9 +2,7 @@
 @use "/src/styles/variables/variables.scss" as *;
 
 .contact-modal {
-  @include section-padding-inline;
   position: fixed;
-  // max-width: 462px;
   width: 100%;
   inset: 0;
   z-index: 1000;
@@ -13,6 +11,10 @@
   height: 100%;
   animation: fadeIn .25s ease forwards;
   overflow: hidden;
+
+  &--below {
+    @include section-padding-inline;
+  }
 
   &__backdrop {
     position: absolute;
@@ -31,7 +33,7 @@
     z-index: 1;
     cursor: default;
     width: 100%;
-    max-width: 462px;
+    max-width: 462px !important;
     overflow-y: auto;
     border-radius: 8px;
     border: 1px solid #FFF;

@@ -1,17 +1,10 @@
+// BrandingAccordion.scss
 @use "@/styles/mixins/mixins" as *;
 @use "/src/styles/variables/variables.scss" as *;
 
 $dur: 280ms;
 $ease: cubic-bezier(.25, .8, .25, 1);
-$bg: #0f1216;
-$fg: #e7ebef;
-$muted: #9aa4af;
 $border: rgba(255, 255, 255, .10);
-
-// .brandbook-acc__item {
-//   overflow-anchor: none;
-// }
-
 
 .brandbook-acc {
   max-width: 462px;
@@ -29,10 +22,7 @@ $border: rgba(255, 255, 255, .10);
     background: rgba(255, 255, 255, 1);
     border-radius: 8px;
     padding: 16px;
-
-    &--open .brandbook-acc__header {
-      transform: translateY(-10px);
-    }
+    overflow-anchor: none;
 
     &--open .brandbook-acc__title-wrap {
       transform: translateY(-2px);
@@ -54,43 +44,26 @@ $border: rgba(255, 255, 255, .10);
     border: 0;
     cursor: pointer;
     text-align: left;
-    transition: transform $dur $ease, background $dur;
+    transition: background $dur;
+    padding: 0;
 
     &:hover {
       background: rgba(255, 255, 255, .04);
     }
   }
 
+  &__title-wrap {
+    transition: transform $dur $ease;
+  }
+
   &__title {
     color: $main-text-color;
     font-family: $submain-text-font;
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
     text-transform: uppercase;
     align-self: center;
-  }
-
-  &__subtitle {
-    color: $main-text-color;
-    font-family: $main-text-font;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    align-self: start;
-    transform: translateY(-6px);
-    transition: opacity $dur $ease, transform $dur $ease;
-
-    &--visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  &__title-wrap {
-    transition: transform $dur $ease;
+    margin: 0;
   }
 
   &__arrow {
@@ -108,7 +81,9 @@ $border: rgba(255, 255, 255, .10);
 
   &__content {
     overflow: hidden;
-    transition: max-height $dur $ease, opacity $dur $ease;
+    transition: height $dur $ease;
+    will-change: height;
+    contain: layout paint;
   }
 
   &__inner {
@@ -116,7 +91,22 @@ $border: rgba(255, 255, 255, .10);
     flex-direction: column;
     gap: 8px;
     opacity: .98;
-    animation: acc-fade $dur $ease both;
+  }
+
+  &__subtitle {
+    color: $main-text-color;
+    font-family: $main-text-font;
+    font-size: 14px;
+    font-weight: 700;
+    align-self: start;
+    transform: translateY(-6px);
+    opacity: 0;
+    transition: opacity 160ms $ease, transform 160ms $ease;
+
+    &--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   &__media img {
@@ -126,34 +116,28 @@ $border: rgba(255, 255, 255, .10);
     display: block;
   }
 
-  &__body p {
+  &__body p,
+  &__body ul,
+  &__body li {
     color: $main-text-color;
     font-family: $main-text-font;
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
-  }
-
-  &__body ul, li{
-    color: $main-text-color;
-    font-family: $main-text-font;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    margin: 0;
   }
 
   @keyframes acc-fade {
-    from {
-      opacity: .2;
-      transform: translateY(-6px);
-    }
-
-    to {
-      opacity: .98;
-      transform: translateY(0);
-    }
+    from { opacity: .2; transform: translateY(-6px); }
+    to   { opacity: .98; transform: translateY(0); }
   }
 }
 
+
+@media (prefers-reduced-motion: reduce) {
+  .brandbook-acc__content {
+    transition: none !important;
+  }
+  .brandbook-acc__subtitle {
+    transition: none !important;
+  }
+}

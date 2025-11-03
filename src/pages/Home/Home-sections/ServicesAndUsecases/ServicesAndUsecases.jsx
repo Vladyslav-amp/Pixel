@@ -1,15 +1,15 @@
 import Widget from '../../../../components/Widget/Widget';
 import MainButton from '../../../Home/Home-button/Main-button';
 import './ServicesAndUsecases.scss';
-import pixelMate from '@/assets/images/widgets/pixel-mate.png';
-import brandingService from '@/assets/images/widgets/branding-service.png';
-import moonlightBrand from '@/assets/images/widgets/moonlight-brand.png';
-import check from '@/assets/images/widgets/video.png';
-import checkWhatYouNeed from '@/assets/images/widgets/checkwhatyouneed.png';
-import sites from '@/assets/images/widgets/sites-and-apps.png';
-import uriel from '@/assets/images/widgets/uriel.png';
-import janice from '@/assets/images/widgets/janice.png';
-import place from '@/assets/images/widgets/placeforyou.png';
+import pixelMate from '@/assets/images/widgets/pixel-mate.webp';
+import brandingService from '@/assets/images/widgets/branding-service.webp';
+import moonlightBrand from '@/assets/images/widgets/moonlight-brand.webp';
+import check from '@/assets/images/widgets/video.webp';
+import checkWhatYouNeed from '@/assets/images/widgets/checkwhatyouneed.webp';
+import sites from '@/assets/images/widgets/sites-and-apps.webp';
+import uriel from '@/assets/images/widgets/uriel.webp';
+import janice from '@/assets/images/widgets/janice.webp';
+import place from '@/assets/images/widgets/place-for-you.webp';
 
 
 

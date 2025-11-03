@@ -140,7 +140,6 @@ export default function ContactModal({
             />
           </label>
 
-          {/* ✅ Чекбокс без підсвічування */}
           <label className="contact-form__checkbox">
             <input type="checkbox" name="agree" />
             <span>

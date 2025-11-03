@@ -3,22 +3,21 @@ import './Main.scss';
 import MainWindow from '../../../Home/Home-window/Main-window.jsx';
 import Widget from '../../../../components/Widget/Widget.jsx';
 import ExpandableWidget from '../../../../components/ExpandableWidget/ExpandableWidget.jsx';
-import instagram from '@/assets/images/widgets/instagram.svg';
-import facebook from '@/assets/images/widgets/facebook.svg';
+import instagram from '@/assets/images/widgets/instagram.webp';
+import facebook from '@/assets/images/widgets/facebook.webp';
 import linkedin from '@/assets/images/widgets/linkedin.webp';
-import whatsapp from '@/assets/images/widgets/whatsapp.svg';
-import youtube from '@/assets/images/widgets/youtube.svg';
-import tiktok from '@/assets/images/widgets/tik-tok.svg';
+import whatsapp from '@/assets/images/widgets/whatsapp.webp';
+import youtube from '@/assets/images/widgets/youtube.webp';
+import tiktok from '@/assets/images/widgets/tik-tok.webp';
 import aiAgent from '@/assets/images/widgets/ai-agents-chatbots.webp';
 import sites from '@/assets/images/widgets/sites-and-apps.webp';
-import whiteFolder from '@/assets/images/widgets/white-folder.svg';
-import mainBrand from '@/assets/images/widgets/main-brand.webp';
+import whiteFolder from '@/assets/images/widgets/white-folder.webp';
+import mainBrand from '@/assets/images/widgets/branding-service.webp';
 import moonlightBrand from '@/assets/images/widgets/moonlight-brand.webp';
 import workflowOptimization from '@/assets/images/widgets/workflow-optimization.webp';
 import pixelMate from '@/assets/images/widgets/pixel-mate.webp';
 import businessAutomation from '@/assets/images/widgets/business-automation.webp';
-import yellowFolder from '@/assets/images/widgets/yellow-folder.svg';
-import urielBrand from '@/assets/images/widgets/uriel-brand.webp';
+import yellowFolder from '@/assets/images/widgets/yellow-folder.webp';
 import janiceBrand from '@/assets/images/widgets/moonlight-brand.webp';
 import socialFolder from '@/assets/images/widgets/social-folder.webp';
 
@@ -133,7 +132,7 @@ export default function Main({ id }) {
             <div className="main-bottom__widgets-widget">
               <Widget
                 size="sm"
-                imageSrc={urielBrand}
+                imageSrc={mainBrand}
                 text="Branding"
                 backImageSrc={janiceBrand}
                 double

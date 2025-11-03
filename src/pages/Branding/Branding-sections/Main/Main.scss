@@ -8,10 +8,11 @@
   display: grid;
 
   &-branding {
-    background-image: url('../../../../assets/images/branding-main--bg.png');
+    background-image: url('../../../../assets/images/branding-main--bg.avif');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 55%;
+    z-index: 1000;
   }
 
   & ul {
@@ -68,10 +69,6 @@
       }
     }
 
-    &__widget-pixel.widget__text {
-      color: #000 !important;
-    }
-
     & :nth-child(1) {
       grid-column: 1 / 4;
       grid-row: 2;
@@ -112,7 +109,6 @@
     & :nth-child(4) {
       grid-column: 3 / 7;
       grid-row: 4;
-      align-self: end;
 
       @include onDesktop {
         grid-column: 4 / 10;

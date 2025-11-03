@@ -1,8 +1,11 @@
+/* src/components/Carousel/Carousel.scss */
 @use "@/styles/mixins/mixins" as *;
 @use "/src/styles/variables/variables.scss" as *;
+
 $shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
 
 .carousel {
+  position: relative; // для стрілок
   width: 100%;
   max-width: 312px;
   margin: 0 auto;
@@ -18,10 +21,15 @@ $shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
   background: #000;
   aspect-ratio: 16 / 9;
   box-shadow: $shadow;
-  cursor: grab;
+  z-index: 1000;
 
-  &--dragging {
-    cursor: grabbing;
+  // курсор grab лише на тач (щоб на desktop не підказувати про drag)
+  @media (hover: none) and (pointer: coarse) {
+    cursor: grab;
+
+    &.carousel__viewport--dragging {
+      cursor: grabbing;
+    }
   }
 }
 
@@ -71,54 +79,65 @@ $shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
   }
 }
 
-.carousel__header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  position: relative;
-}
-
 .carousel__title {
   color: $main-text-color;
   text-align: center;
-  font-family: Archivo;
+  font-family: Archivo, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
   font-size: 24px;
-  font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
+
 .carousel__arrow {
-  width: 20px;
-  height: 20px;
+  position: absolute;
+  left: auto;
+  right: auto;
+  width: 40px;
+  height: 40px;
+  padding: 0;
   border: none;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 1;
+  background: transparent;
+  display: grid;
+  place-items: center;
   cursor: pointer;
-  transition: transform 0.16s ease, opacity 0.16s ease, background 0.16s ease;
+  transition: transform .18s ease, opacity .18s ease;
+  z-index: 3;
   display: none;
+  
+  @include onTablet {
+    display: block;
+  }
 
-  &:hover {
-    transform: scale(1.06);
-    background: rgba(0, 0, 0, 0.12);
+  svg {
+    display: block;
+    transition: filter .18s ease;
+  }
+
+  &:hover svg {
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .25));
   }
 
   &:active {
-    transform: scale(0.96);
+    transform: translateY(-50%) scale(.96);
   }
 
   &:disabled {
-    opacity: 0.4;
+    opacity: .5;
     cursor: not-allowed;
   }
 
-  @include onTablet {
-    display: grid;
+  &--prev {
+    left: calc(-1 * clamp(24px, 6vw, 48px));
+  }
+
+  &--next {
+    right: calc(-1 * clamp(24px, 6vw, 48px));
+
+    svg {
+      transform: scaleX(-1);
+      transform-origin: center;
+    }
   }
 }

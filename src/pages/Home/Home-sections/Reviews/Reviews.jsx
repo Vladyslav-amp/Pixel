@@ -2,8 +2,8 @@ import React from "react";
 import "./Reviews.scss";
 import Widget from "../../../../components/Widget/Widget.jsx";
 import AnimatedMenuIcon from '../../../../components/Icons/Icon.jsx';
-import pixelMate from '@/assets/images/widgets/pixel-mate.png';
-import aboutUs from '@/assets/images/widgets/yellow-folder.svg';
+import pixelMate from '@/assets/images/widgets/pixel-mate.webp';
+import aboutUs from '@/assets/images/widgets/yellow-folder.webp';
 
 export default function Reviews({ id }) {
   const videoJanice = "/video/janice.mp4";

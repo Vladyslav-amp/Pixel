@@ -2,23 +2,29 @@ import React from "react";
 import "./Main.scss";
 import Widget from "../../../../components/Widget/Widget.jsx";
 import Carousel from '../../../../components/Carousel/Carousel.jsx';
-import img1 from "@/assets/images/widgets/accordion.png";
-import img2 from "@/assets/images/widgets/accordion.png";
-import img3 from "@/assets/images/widgets/accordion.png";
-import check from "@/assets/images/widgets/video.png";
-import pixel from "@/assets/images/widgets/pixel-mate.png";
-import accordion from '@/assets/images/widgets/accordion.png'
+import img1 from "@/assets/images/uriel-carousel/uriel-carousel1.webp";
+import img2 from "@/assets/images/uriel-carousel/uriel-carousel2.webp";
+import img3 from "@/assets/images/uriel-carousel/uriel-carousel3.webp";
+import img4 from "@/assets/images/uriel-carousel/uriel-carousel4.webp";
+import img5 from "@/assets/images/uriel-carousel/uriel-carousel5.webp";
+import img6 from "@/assets/images/uriel-carousel/uriel-carousel6.webp";
+import img7 from "@/assets/images/uriel-carousel/uriel-carousel7.webp";
+import img8 from "@/assets/images/uriel-carousel/uriel-carousel8.webp";
+import img9 from "@/assets/images/uriel-carousel/uriel-carousel9.webp";
+import check from "@/assets/images/widgets/video.webp";
+import pixel from "@/assets/images/widgets/pixel-mate.webp";
+import accordion from '@/assets/images/widgets/accordion.webp'
 import { Accordion, AccordionItem } from "../../BrandingAccordion/BrandingAccordion.jsx";
 
 export default function Main({ id }) {
 
-  const slides = [img1, img2, img3];
+  const urielSlides = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 
   return (
     <section id={id} className="main main-branding">
       <div className="main-block">
         <div className="main-block__widget">
-          <Widget size="lg" imageSrc={check} text="Check what you need" />
+          <Widget size="lg" imageSrc={check} text="Check what you need"  textColor="light"/>
         </div>
 
         <div className="main-block__widget main-block__widget-pixel">
@@ -26,7 +32,7 @@ export default function Main({ id }) {
         </div>
 
         <div className="main-block__widget main-block__widget--hide">
-          <Carousel items={slides} title="Uriel Saenz brand book" />
+          <Carousel items={urielSlides} title="Uriel Saenz brand book" />
         </div>
 
         <div className="main-block__widget main-block__widget--tablet">

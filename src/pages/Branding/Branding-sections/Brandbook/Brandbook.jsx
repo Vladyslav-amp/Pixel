@@ -1,27 +1,39 @@
-import React from "react";
+import React, { useState } from 'react'
 import "./Brandbook.scss";
 import Widget from "../../../../components/Widget/Widget.jsx";
 import { Accordion, AccordionItem } from "../../BrandingAccordion/BrandingAccordion.jsx";
-import GlitchEffect from '../../Effects/GlitchEffect.jsx'
-
+import BrandbookPopup from "../../../../components/BrandbookPopup/BrandbookPopup.jsx";
 import Carousel from '../../../../components/Carousel/Carousel.jsx';
-import img1 from "/src/assets/images/widgets/moonlight-brand.png";
-import img2 from "/src/assets/images/widgets/moonlight-brand.png";
-import img3 from "/src/assets/images/widgets/moonlight-brand.png";
-import img4 from "/src/assets/images/widgets/uriel.png";
-import img5 from "/src/assets/images/widgets/uriel.png";
-import img6 from "/src/assets/images/widgets/uriel.png";
-import pixelmate from '@/assets/images/widgets/pixel-mate.png'
-import video from '@/assets/images/widgets/video.png'
+import img1 from "@/assets/images/uriel-carousel/uriel-carousel1.webp";
+import img2 from "@/assets/images/uriel-carousel/uriel-carousel2.webp";
+import img3 from "@/assets/images/uriel-carousel/uriel-carousel3.webp";
+import img4 from "@/assets/images/uriel-carousel/uriel-carousel4.webp";
+import img5 from "@/assets/images/uriel-carousel/uriel-carousel5.webp";
+import img6 from "@/assets/images/uriel-carousel/uriel-carousel6.webp";
+import img7 from "@/assets/images/uriel-carousel/uriel-carousel7.webp";
+import img8 from "@/assets/images/uriel-carousel/uriel-carousel8.webp";
+import img9 from "@/assets/images/uriel-carousel/uriel-carousel9.webp";
+import pixelmate from '@/assets/images/widgets/pixel-mate.webp'
+import video from '@/assets/images/widgets/video.webp'
 import whiteFolder from '@/assets/images/widgets/white-folder.svg'
 import accordion from '@/assets/images/widgets/accordion.png'
 import MainButton from '../../../Home/Home-button/Main-button.jsx';
 
 
 export default function Brandbook({ id }) {
-  const slides = [img1, img2, img3];
-  const slides2 = [img4, img5, img6];
+  const urielSlides = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 
+  const [open, setOpen] = useState(false)
+
+  const cols = ['BRANDBOOK', 'STANDARD', 'PIXEL']
+  const rows = [
+    { label: 'Visual Guidelines', standard: true, pixel: true },
+    { label: 'Brand Voice & Tone', standard: false, pixel: true },
+    { label: 'Deep Brand Analysis', standard: false, pixel: true },
+    { label: 'Flexibility', standard: true, pixel: true },
+    { label: 'Built-in AI Assistant', standard: false, pixel: true },
+    { label: 'Automation', standard: false, pixel: true },
+  ]
 
   return (
     <section id={id} className="brandbook">
@@ -81,15 +93,27 @@ export default function Brandbook({ id }) {
         </div>
 
         <div className="brandbook-block__widget">
-          <Carousel items={slides} title="Janice Grodsky brand book" />
+          <Carousel items={urielSlides} title="Janice Grodsky brand book" />
         </div>
 
         <div className="brandbook-block__widget brandbook-block__widget--carousel">
-          <Carousel items={slides2} title="Uriel Saenz brand book" />
+          <Carousel items={urielSlides} title="Uriel Saenz brand book" />
         </div>
 
         <div className="brandbook-block__widget">
-          <Widget size="sm" imageSrc={video} text="Pixel vs Traditional" />
+          <Widget
+            size="sm"
+            imageSrc={video} text="Pixel vs Traditional"
+            onClick={() => setOpen(true)}
+            href={undefined}
+          />
+
+          <BrandbookPopup
+            open={open}
+            onClose={() => setOpen(false)}
+            columns={cols}
+            rows={rows}
+          />
         </div>
 
         <div className="brandbook-block__widget">

@@ -1,0 +1,97 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+
+.bbp-backdrop {
+  @include section-padding;
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+}
+
+.bbp {
+  position: relative;
+  width: 100%;
+  max-width: 462px;
+  background: #bfbfbf;
+  border: 1px solid $submain-text-color;
+  border-radius: 8px;
+  padding: 24px 16px;
+
+  &__close {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    font-size: 16px;
+    color: $submain-text-color;
+    font-weight: bold;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    column-gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  &__col {
+    color: $submain-text-color;
+    font-family: $submain-text-font;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 8px;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+
+  &__rows {
+    display: grid;
+    row-gap: 12px;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    column-gap: 12px;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__cell {
+    background: $submain-text-color;
+    border-radius: 8px;
+    padding: 10px 12px;
+    text-align: center;
+    font-weight: 600;
+
+    &--label {
+      text-align: left;
+      color: $main-text-color;
+      font-family: $main-text-font;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.ok {
+  color: #0a8f3d;
+}
+
+.no {
+  color: #d53131;
+}

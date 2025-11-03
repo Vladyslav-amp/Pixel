@@ -6,26 +6,15 @@
   overflow: hidden;
   height: 100%;
   display: grid;
-  background-image: url('../../../../assets/images/reviews-background.png');
+  background-image: url('../../../../assets/images/reviews-background.avif');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  z-index: 999;
 
   @include onDesktop {
     height: 100vh;
   }
-
-  // & ::before {
-  //   content: "";
-  //   position: absolute;
-  //   inset: 0;
-  //   background-image: url('images/reviews-background.png');
-  //   background-repeat: no-repeat;
-  //   background-size: cover;
-  //   transform: scaleY(-1);
-  //   z-index: -1;
-  // }
-
 
   &-block {
     @include section-padding;
@@ -57,7 +46,6 @@
         font-weight: 400;
         line-height: normal;
         text-transform: uppercase;
-        // max-width: 60%;
         margin: 0 auto;
       }
 
@@ -109,7 +97,7 @@
       }
 
       @include onDesktop {
-        grid-column: 1 / 6;
+        grid-column: 1 / 7;
       }
     }
 

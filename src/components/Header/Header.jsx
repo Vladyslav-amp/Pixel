@@ -84,7 +84,7 @@ export default function Header({ sections = [], activeId: activeIdProp }) {
     return () => ro.disconnect();
   }, [open]);
 
-  // Логіка кнопки
+  
   const handleButtonClick = useCallback(() => {
     if (isContactOpen) {
       setContactOpen(false);
@@ -136,12 +136,11 @@ export default function Header({ sections = [], activeId: activeIdProp }) {
                 {sections.map((item) => (
                   <li key={item.label} className="site-dropdown__item">
                     <button
-                      className={`site-dropdown__link ${
-                        (item.type === 'section' && item.id === activeIdProp) ||
-                        (item.type === 'route' && pathname === item.to)
+                      className={`site-dropdown__link ${(item.type === 'section' && item.id === activeIdProp) ||
+                          (item.type === 'route' && pathname === item.to)
                           ? 'is-active'
                           : ''
-                      }`}
+                        }`}
                       onClick={() => handleGo(item)}
                     >
                       {item.label || item.title}
@@ -153,6 +152,13 @@ export default function Header({ sections = [], activeId: activeIdProp }) {
           </nav>
         </div>
       </header>
+
+      {open && (
+        <div
+          className="menu-overlay is-visible"
+          onClick={() => setOpen(false)}
+        />
+      )}
 
       {shouldShowButton && (
         <div className="header-zone header-zone--visible">

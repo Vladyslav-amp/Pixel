@@ -9,7 +9,7 @@
     radial-gradient(circle,
       var(--dot) 0 var(--dot-size),
       transparent calc(var(--dot-size) + 1px)) 0 0 / var(--gap) var(--gap) repeat;
-  z-index: 9999;
+  z-index: 500;
   pointer-events: none;
 }
 
@@ -173,7 +173,7 @@
   position: fixed;
   inset: 0 0 auto 0;
   place-items: center;
-  z-index: 1050;
+  z-index: 9999;
   pointer-events: none;
 
   @include pageGrid;

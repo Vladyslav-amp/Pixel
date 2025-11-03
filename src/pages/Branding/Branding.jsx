@@ -7,7 +7,7 @@ import Brandbook from './Branding-sections/Brandbook/Brandbook.jsx';
 import Contact from './Branding-sections/Contact/Contact.jsx';
 import Gameover from './Branding-sections/Gameover/Gameover.jsx';
 // import useActiveSection from '../../hooks/useActiveSection.js';
-import useSectionVisible from '../../hooks/useSectionVisible.js';
+// import useSectionVisible from '../../hooks/useSectionVisible.js';
 import MainButton from '../Home/Home-button/Main-button.jsx';
 import ContactModal from '../../components/ContactModal/ContactModal.jsx';
 
@@ -19,22 +19,16 @@ export default function Branding() {
     []
   );
 
-  // const activeId = useActiveSection(SECTION_IDS, { threshold: [0.5] });
-  const isMainVisible = useSectionVisible('Main', {
-    rootMargin: '-72px 0px 0px 0px',
-    threshold: 0.01,
-  });
-
   const [isContactOpen, setContactOpen] = useState(false);
 
   return (
     <section className="branding-main" id="branding">
       <div className="branding-zone">
         <div className="branding-zone__inner">
-          <Header sections={NAV}  />
+          <Header sections={NAV} />
         </div>
-        {!isMainVisible && (
-          <div className="branding-zone__btn branding-zone__btn--relative">
+
+          <div className="header-zone__btn header-zone__btn--relative">
             {!isContactOpen ? (
               <MainButton
                 text="try $0 consultation"
@@ -55,7 +49,6 @@ export default function Branding() {
               position="below"
             />
           </div>
-        )}
       </div>
 
       <div className="page__offset" aria-hidden />

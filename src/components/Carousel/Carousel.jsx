@@ -1,23 +1,25 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./Carousel.scss";
 
 export default function Carousel({
   items = [],
   initialIndex = 0,
   loop = true,
-  title = "Галерея",      // тайтл задаєш тут іззовні
-  onChange,               // опційно: (i) => void
+  title = "Gallery",
+  onChange,
+  mouseDrag = false, // мишкою не тягнемо
 }) {
   const [index, setIndex] = useState(
     Math.min(Math.max(initialIndex, 0), Math.max(items.length - 1, 0))
   );
-  const trackRef = useRef(null);
 
-  // drag/swipe
+  const trackRef = useRef(null);
   const startX = useRef(0);
   const currentX = useRef(0);
   const isDragging = useRef(false);
   const slideWidth = useRef(0);
+  const prevBtnRef = useRef(null);
+  const nextBtnRef = useRef(null);
 
   const goTo = useCallback(
     (next) => {
@@ -34,7 +36,7 @@ export default function Carousel({
   const next = useCallback(() => goTo(index + 1), [goTo, index]);
   const prev = useCallback(() => goTo(index - 1), [goTo, index]);
 
-  // клавіші
+  // клавіші ← →
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "ArrowRight") next();
@@ -44,7 +46,7 @@ export default function Carousel({
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev]);
 
-  // pointer/touch drag
+  // drag / swipe (мишкою тільки якщо дозволено)
   useEffect(() => {
     const viewport = trackRef.current?.parentElement;
     if (!viewport) return;
@@ -69,98 +71,160 @@ export default function Carousel({
       if (!isDragging.current) return;
       const dx = currentX.current - startX.current;
       const threshold = Math.max(40, slideWidth.current * 0.15);
-      trackRef.current.style.transition = ""; // повертаємо анімацію
+      trackRef.current.style.transition = "";
       viewport.classList.remove("carousel__viewport--dragging");
       isDragging.current = false;
 
       if (dx > threshold) prev();
       else if (dx < -threshold) next();
-      else {
-        trackRef.current.style.transform = `translateX(-${index * 100}%)`;
-      }
+      else trackRef.current.style.transform = `translateX(-${index * 100}%)`;
     };
 
-    viewport.addEventListener("mousedown", onDown);
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseup", onUp);
+    if (mouseDrag) {
+      viewport.addEventListener("mousedown", onDown);
+      window.addEventListener("mousemove", onMove);
+      window.addEventListener("mouseup", onUp);
+    }
+
     viewport.addEventListener("touchstart", onDown, { passive: true });
     window.addEventListener("touchmove", onMove, { passive: true });
     window.addEventListener("touchend", onUp);
 
     return () => {
-      viewport.removeEventListener("mousedown", onDown);
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseup", onUp);
+      if (mouseDrag) {
+        viewport.removeEventListener("mousedown", onDown);
+        window.removeEventListener("mousemove", onMove);
+        window.removeEventListener("mouseup", onUp);
+      }
       viewport.removeEventListener("touchstart", onDown);
       window.removeEventListener("touchmove", onMove);
       window.removeEventListener("touchend", onUp);
     };
-  }, [index, next, prev]);
+  }, [index, next, prev, mouseDrag]);
 
-  // позиція
+  // плавний перехід
   useEffect(() => {
-    if (!trackRef.current) return;
-    trackRef.current.style.transition = "transform 320ms ease";
-    trackRef.current.style.transform = `translateX(-${index * 100}%)`;
+    if (trackRef.current) {
+      trackRef.current.style.transition = "transform 320ms ease";
+      trackRef.current.style.transform = `translateX(-${index * 100}%)`;
+    }
   }, [index]);
+
+  // центрування стрілок по viewport
+  useEffect(() => {
+    const viewport = trackRef.current?.parentElement;
+    const container = viewport?.parentElement;
+    if (!viewport || !container || !prevBtnRef.current || !nextBtnRef.current) return;
+
+    const positionArrows = () => {
+      const vr = viewport.getBoundingClientRect();
+      const cr = container.getBoundingClientRect();
+      const centerY = vr.top - cr.top + vr.height / 2;
+      [prevBtnRef.current, nextBtnRef.current].forEach((btn) => {
+        btn.style.top = `${centerY}px`;
+        btn.style.transform = "translateY(-50%)";
+      });
+    };
+
+    positionArrows();
+    window.addEventListener("resize", positionArrows);
+    let ro;
+    if ("ResizeObserver" in window) {
+      ro = new ResizeObserver(positionArrows);
+      ro.observe(viewport);
+    }
+    return () => {
+      window.removeEventListener("resize", positionArrows);
+      if (ro) ro.disconnect();
+    };
+  }, []);
 
   const canPrev = loop || index > 0;
   const canNext = loop || index < items.length - 1;
+
+  // пагінація: 3 точки з циклічною активною (1→2→3→1…)
+  const { dots, activePos } = useMemo(() => {
+    const n = items.length;
+    if (n === 0) return { dots: [], activePos: 0 };
+    if (n <= 3)
+      return { dots: Array.from({ length: n }, (_, i) => i), activePos: Math.min(index, n - 1) };
+
+    if (loop) {
+      const base = index - (index % 3);
+      const dots = [0, 1, 2].map((p) => (base + p) % n);
+      const activePos = index % 3;
+      return { dots, activePos };
+    } else {
+      const start = Math.max(0, Math.min(index - 1, n - 3));
+      const dots = [start, start + 1, start + 2];
+      const activePos = Math.min(index - start, 2);
+      return { dots, activePos };
+    }
+  }, [items.length, index, loop]);
 
   return (
     <div className="carousel" aria-roledescription="carousel">
       <div className="carousel__viewport">
         <div className="carousel__track" ref={trackRef}>
           {items.map((src, i) => (
-            <div
-              className="carousel__slide"
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`${i + 1} / ${items.length}`}
-              key={i}
-            >
+            <div className="carousel__slide" role="group" aria-label={`${i + 1}/${items.length}`} key={i}>
               <img className="carousel__img" src={src} alt={`Slide ${i + 1}`} />
             </div>
           ))}
         </div>
       </div>
 
-      {/* ПАГІНАЦІЯ — під каруселлю */}
+      {/* стрілки поза viewport */}
+      <button
+        ref={prevBtnRef}
+        className="carousel__arrow carousel__arrow--prev"
+        onClick={prev}
+        disabled={!canPrev}
+        aria-label="Previous slide"
+        type="button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="15.999" cy="15.999" r="13.038" stroke="#0C0C0B" />
+          <path
+            d="M9.57 16.354c-.195-.195-.195-.512 0-.707l3.182-3.182c.195-.195.511-.195.707 0 .195.195.195.512 0 .707L10.63 16l2.828 2.828c.195.195.195.512 0 .707a.5.5 0 0 1-.707 0L9.57 16.354ZM21 16v.5H9.923V16v-.5H21V16Z"
+            fill="#0C0C0B"
+          />
+        </svg>
+      </button>
+
+      <button
+        ref={nextBtnRef}
+        className="carousel__arrow carousel__arrow--next"
+        onClick={next}
+        disabled={!canNext}
+        aria-label="Next slide"
+        type="button"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="15.999" cy="15.999" r="13.038" stroke="#0C0C0B" />
+          <path
+            d="M9.57 16.354c-.195-.195-.195-.512 0-.707l3.182-3.182c.195-.195.511-.195.707 0 .195.195.195.512 0 .707L10.63 16l2.828 2.828c.195.195.195.512 0 .707a.5.5 0 0 1-.707 0L9.57 16.354ZM21 16v.5H9.923V16v-.5H21V16Z"
+            fill="#0C0C0B"
+          />
+        </svg>
+      </button>
+
+      {/* пагінація 3 точки */}
       <div className="carousel__dots" role="tablist" aria-label="Пагінація">
-        {items.map((_, i) => (
+        {dots.map((slideIdx, pos) => (
           <button
-            key={i}
+            key={`dot-${slideIdx}-${pos}`}
             role="tab"
-            aria-selected={i === index}
-            className={`carousel__dot${i === index ? " carousel__dot--active" : ""}`}
-            onClick={() => goTo(i)}
-            aria-label={`Go to slide ${i + 1}`}
+            aria-selected={pos === activePos}
+            className={`carousel__dot${pos === activePos ? " carousel__dot--active" : ""}`}
+            onClick={() => goTo(slideIdx)}
+            aria-label={`Go to slide ${slideIdx + 1}`}
+            type="button"
           />
         ))}
       </div>
 
-      {/* ТАЙТЛ + стрілки — під пагінацією, стрілки біля тайтла */}
-      <div className="carousel__header">
-        <button
-          className="carousel__arrow carousel__arrow--prev"
-          onClick={prev}
-          disabled={!canPrev}
-          aria-label="prev slide"
-        >
-          ‹
-        </button>
-
-        <h3 className="carousel__title">{title}</h3>
-
-        <button
-          className="carousel__arrow carousel__arrow--next"
-          onClick={next}
-          disabled={!canNext}
-          aria-label="next slide"
-        >
-          ›
-        </button>
-      </div>
+      <h3 className="carousel__title">{title}</h3>
     </div>
   );
 }
