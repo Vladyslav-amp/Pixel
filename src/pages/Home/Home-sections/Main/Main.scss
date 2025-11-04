@@ -137,6 +137,52 @@
   }
 }
 
+// -----------------------------------------
+.pixel-ai--active {
+  cursor: pointer;
+}
+
+.pixel-ai--active .widget__media img {
+  padding: 8px;
+}
+
+.pixel-ai--active ::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  background-color: #498E21;
+  text-align: center;
+  font-size: 14px;
+  font-family: $main-text-font;
+  color: $submain-text-color;
+  font-weight: 300;
+  border-radius: 50%;
+  border: 1px solid $submain-text-color;
+  animation: pulseA 1.5s infinite;
+}
+
+@keyframes pulseA {
+  0% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+}
+
+
+
 
 .main-bottom__widgets {
   @include pageGrid;

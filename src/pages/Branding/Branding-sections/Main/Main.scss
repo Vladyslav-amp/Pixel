@@ -61,7 +61,7 @@
       }
     }
 
-    &__widget-pixel {
+    &__widget-pixel--desktop {
       @include onDesktop {
         position: fixed;
         bottom: 10%;
@@ -95,7 +95,7 @@
     }
 
     & :nth-child(3) {
-      grid-column: 1 / -1;
+      grid-column: 12;
       grid-row: 4;
       // justify-items: center;
 
@@ -107,12 +107,37 @@
     }
 
     & :nth-child(4) {
+      grid-column: 1 / 4;
+      grid-row: 4;
+
+      @include onDesktop {
+        grid-column: 4 / 10;
+      }
+    }
+
+    & :nth-child(5) {
       grid-column: 3 / 7;
       grid-row: 4;
 
       @include onDesktop {
         grid-column: 4 / 10;
       }
+    }
+  }
+}
+
+.main-block__widget-pixel {
+  &--desktop {
+    display: none;
+    @include onDesktop {
+      display: flex;
+    }
+  }
+
+  &--mobile {
+    display: block;
+    @include onDesktop {
+      display: none;
     }
   }
 }
