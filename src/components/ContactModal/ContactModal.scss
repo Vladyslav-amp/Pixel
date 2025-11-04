@@ -21,6 +21,7 @@
   }
 
   &.is-open {
+    @include section-padding-inline;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
