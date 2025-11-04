@@ -1,3 +1,4 @@
+/* ContactModal.scss */
 @use "@/styles/mixins/mixins" as *;
 @use "/src/styles/variables/variables.scss" as *;
 
@@ -9,11 +10,21 @@
   display: grid;
   place-items: center;
   height: 100%;
-  animation: fadeIn .25s ease forwards;
   overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .25s ease, visibility .25s step-end;
 
   &--below {
     @include section-padding-inline;
+  }
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity .25s ease, visibility 0s step-start;
   }
 
   &__backdrop {
@@ -22,16 +33,20 @@
     background: rgba(0, 0, 0, .7);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(5px);
-    z-index: 0;
+    z-index: 1;
     opacity: 0;
-    animation: backdropFade .25s ease forwards;
+    transition: opacity .25s ease;
     cursor: default;
+  }
+
+  &.is-open &__backdrop {
+    opacity: 1;
   }
 
   &__panel {
     position: relative;
     top: 5%;
-    z-index: 1;
+    z-index: 2;
     cursor: default;
     width: 100%;
     max-width: 462px !important;
@@ -43,8 +58,41 @@
     box-shadow: 0 10px 40px rgba(0, 0, 0, .4);
     opacity: 0;
     transform: translateY(12px) scale(.98);
-    animation: panelIn .28s cubic-bezier(.4, 0, .2, 1) forwards;
+    transition: opacity .28s cubic-bezier(.4, 0, .2, 1), transform .28s cubic-bezier(.4, 0, .2, 1);
   }
+
+  &.is-open &__panel {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.contact-modal--inline {
+  position: static;
+  inset: auto;
+  display: block;
+  z-index: 1;
+  height: auto;
+  overflow: visible;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: none;
+}
+
+.contact-modal--inline .contact-modal__backdrop {
+  display: none !important;
+}
+
+.contact-modal--inline .contact-modal__panel {
+  position: static;
+  transform: none;
+  max-width: 100%;
+  width: 100%;
+  box-shadow: none;
+  overflow: visible;
+  opacity: 1;
+  transition: none;
 }
 
 .contact-form {
@@ -139,67 +187,6 @@
     }
   }
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0
-  }
-
-  to {
-    opacity: 1
-  }
-}
-
-@keyframes backdropFade {
-  from {
-    opacity: 0
-  }
-
-  to {
-    opacity: 1
-  }
-}
-
-@keyframes panelIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px) scale(.98);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.contact-modal--inline {
-  position: static;
-  inset: auto;
-  display: block;
-  z-index: 1;
-  height: auto;
-  overflow: visible;
-  animation: none;
-  /* без fadeIn */
-}
-
-.contact-modal--inline .contact-modal__backdrop {
-  display: none !important;
-  /* без затемнення */
-}
-
-.contact-modal--inline .contact-modal__panel {
-  position: static;
-  transform: none;
-  max-width: 100%;
-  width: 100%;
-  box-shadow: none;
-  overflow: visible;
-  opacity: 1;
-  animation: none;
-  /* без panelIn */
-}
-
 
 .contact-form__checkbox {
   display: flex;

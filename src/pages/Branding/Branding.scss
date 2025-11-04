@@ -213,8 +213,8 @@
 }
 
 .header-zone__btn--relative {
-  position: fixed;
-  top: 90px;
+  position: absolute;
+  max-width: 462px;
   width: 100%;
   z-index: 1000;
   opacity: 0;
