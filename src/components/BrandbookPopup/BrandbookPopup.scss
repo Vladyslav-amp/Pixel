@@ -88,6 +88,15 @@
   }
 }
 
+.bbp__cell {
+  display: flex;
+  justify-content: center;
+}
+
+.bbp__cell--label {
+  justify-content: start;
+}
+
 .ok {
   color: #0a8f3d;
   fill: #0a8f3d;

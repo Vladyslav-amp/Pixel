@@ -19,21 +19,17 @@ export default function BrandbookPopup({
   useEffect(() => {
     if (!open) return
 
-    // zapamiętaj focus i zablokuj scroll
     previouslyFocusedRef.current = document.activeElement
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
 
-    // focus na przycisk zamknięcia
     closeBtnRef.current?.focus()
 
     const onKeyDown = (e) => {
-      // ESC zamyka
       if (e.key === 'Escape') {
         onClose?.()
         return
       }
-      // prosty focus trap
       if (e.key === 'Tab' && dialogRef.current) {
         const focusables = dialogRef.current.querySelectorAll(
           'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
@@ -64,7 +60,6 @@ export default function BrandbookPopup({
       window.removeEventListener('keydown', onKeyDown)
       document.removeEventListener('mousedown', onOutsideClick)
       document.body.style.overflow = prevOverflow || ''
-      // przywróć focus
       previouslyFocusedRef.current?.focus?.()
     }
   }, [open, onClose])
