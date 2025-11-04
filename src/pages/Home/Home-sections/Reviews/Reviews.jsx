@@ -98,7 +98,7 @@ export default function Reviews({ id }) {
           <Widget size="sm" imageSrc={aboutUs} text="About us" />
         </div>
 
-        <div className="reviews-widgets reviews-widgets--second">
+        <div className="reviews-widgets reviews-widgets--second pixel-ai">
           <Widget size="sm" imageSrc={pixelMate} text="PixelMate" />
         </div>
       </div>

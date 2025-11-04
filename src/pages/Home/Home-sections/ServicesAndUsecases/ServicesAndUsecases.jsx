@@ -28,7 +28,7 @@ export default function servicesandusecases({ id }) {
         </div>
 
         <div className="servicesandusecases-bottom">
-          <div className="servicesandusecases-bottom__pixelmate">
+          <div className="servicesandusecases-bottom__pixelmate pixel-ai">
             <Widget size="sm" imageSrc={pixelMate} text="PixelMate" />
           </div>
 
@@ -39,6 +39,7 @@ export default function servicesandusecases({ id }) {
               text="Branding"
               backImageSrc={moonlightBrand}
               double
+              href={'/branding'}
             />
           </div>
 

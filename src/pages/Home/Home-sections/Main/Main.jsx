@@ -27,15 +27,15 @@ export default function Main({ id }) {
       <div className="main-top">
         <div className="main-top__widgets">
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc={aiAgent} text="AI Agents and chatbots" />
+            <Widget size="sm" imageSrc={aiAgent} text="AI Agents and chatbots"/>
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc={linkedin} text="Linkedin" />
+            <Widget size="sm" imageSrc={linkedin} text="Linkedin" href={'https://www.linkedin.com/company/pixel-experts-team/'}/>
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc={whatsapp} text="WhatsApp" />
+            <Widget size="sm" imageSrc={whatsapp} text="WhatsApp" href={'https://wa.me/48884037664?text=Hello%2C%20Pixel%20%21'}/>
           </div>
 
           <div className="main-top__widgets-widget">
@@ -43,7 +43,7 @@ export default function Main({ id }) {
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc={instagram} text="Instagram" />
+            <Widget size="sm" imageSrc={instagram} text="Instagram" href={'https://www.instagram.com/pixelexpertsteam'}/>
           </div>
 
           <div className="main-top__widgets-widget">
@@ -98,23 +98,23 @@ export default function Main({ id }) {
       <div className="main-bottom">
         <div className="main-bottom__widgets">
           <div className="main-bottom__widgets-first">
-            <div className="main-bottom__widgets-widget">
+            <div className="main-bottom__widgets-widget pixel-ai">
               <Widget size="sm" imageSrc={pixelMate} text="PixelMate" />
             </div>
 
             <ExpandableWidget
               trigger={{ size: 'sm', imageSrc: socialFolder, text: 'Social media' }}
               items={[
-                { imageSrc: whatsapp, text: 'WhatsApp', href: 'https://facebook.com/...' },
-                { imageSrc: instagram, text: 'Instagram', href: 'https://instagram.com/...' },
-                { imageSrc: facebook, text: 'Facebook', href: 'https://twitter.com/...' },
-                { imageSrc: youtube, text: 'YouTube', href: 'https://youtube.com/@...' },
+                { imageSrc: whatsapp, text: 'WhatsApp', href: 'https://wa.me/48884037664?text=Hello%2C%20Pixel%20%21' },
+                { imageSrc: instagram, text: 'Instagram', href: 'https://www.instagram.com/pixelexpertsteam' },
+                { imageSrc: facebook, text: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61583309151807' },
+                { imageSrc: youtube, text: 'YouTube', href: 'https://www.youtube.com/channel/UCdG3plbGNkRPiwRZfXY01Fg' },
                 { imageSrc: tiktok, text: 'TikTok', href: 'https://tiktok.com/@...' },
               ]}
             />
 
             <div className="main-bottom__widgets-widget">
-              <Widget size="sm" imageSrc={linkedin} text="Linkedin" />
+              <Widget size="sm" imageSrc={linkedin} text="Linkedin" href={"https://www.linkedin.com/company/pixel-experts-team/"}/>
             </div>
           </div>
 
@@ -136,6 +136,7 @@ export default function Main({ id }) {
                 text="Branding"
                 backImageSrc={janiceBrand}
                 double
+                href={'/branding'}
               />
             </div>
 
@@ -147,6 +148,10 @@ export default function Main({ id }) {
           <div className="main-bottom__widgets-four">
             <div className="main-bottom__widgets-widget">
               <Widget size="sm" imageSrc={aiAgent} text="AI Agents and chatbots" />
+            </div>
+
+            <div className="main-bottom__widgets-widget">
+              <Widget size="sm" imageSrc={businessAutomation} text="AI Agents and chatbots" />
             </div>
           </div>
         </div>

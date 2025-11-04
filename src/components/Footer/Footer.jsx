@@ -10,9 +10,9 @@ const leftLinks = [
 ];
 
 const rightLinks = [
-  { label: "LINKEDIN", href: "https://linkedin.com" },
-  { label: "INSTAGRAM", href: "https://instagram.com" },
-  { label: "WHATSAPP", href: "https://whatsapp.com" }
+  { label: "LINKEDIN", href: "https://www.linkedin.com/company/pixel-experts-team/" },
+  { label: "INSTAGRAM", href: "https://www.instagram.com/pixelexpertsteam" },
+  { label: "WHATSAPP", href: "https://wa.me/48884037664?text=Hello%2C%20Pixel%20%21" }
 ];
 
 export default function Footer() {

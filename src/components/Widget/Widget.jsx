@@ -10,7 +10,7 @@ export default function Widget({
   text,
   href,
   onClick,
-  target = '_blank',
+  target = '_self',
   rel = 'noopener noreferrer',
   double = false,
   textColor = '#0C0C0B',

@@ -114,6 +114,7 @@
     }
 
     & :nth-child(5) {
+      cursor: pointer;
       @include onTablet {
         grid-column: 2 / 3;
         grid-row: 4;
