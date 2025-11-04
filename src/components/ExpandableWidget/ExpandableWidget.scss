@@ -47,16 +47,14 @@
       position: absolute;
       right: 0;
       top: 100%;
-      margin-top: 0.5rem;
+      margin-top: 48px;
       display: grid;
-      // grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
+      gap: 28px;
       z-index: 10;
 
       opacity: 0;
       transform: translateY(-6px);
       pointer-events: none;
-      transition: opacity .25s ease, transform .25s ease;
     }
 
     &.expander--open .expander__panel {
@@ -64,10 +62,5 @@
       transform: translateY(0);
       pointer-events: auto;
     }
-
-    &.expander--open .expander__panel:nth-child(1) {
-      grid-column: 6/7;
-    }
-
   }
 }

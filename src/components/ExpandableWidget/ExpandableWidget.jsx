@@ -37,7 +37,6 @@ export default function ExpandableWidget({
         />
       </div>
 
-      {/* ⚠️ Обгортка панелі: на мобілці display: contents, тож не змінює поведінку */}
       <div className="expander__panel">
         {visible &&
           items.map((it, i) => {

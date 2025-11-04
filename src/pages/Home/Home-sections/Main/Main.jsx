@@ -21,21 +21,22 @@ import yellowFolder from '@/assets/images/widgets/yellow-folder.webp';
 import janiceBrand from '@/assets/images/widgets/moonlight-brand.webp';
 import socialFolder from '@/assets/images/widgets/social-folder.webp';
 
+
 export default function Main({ id }) {
   return (
     <section id={id} className="main">
       <div className="main-top">
         <div className="main-top__widgets">
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc={aiAgent} text="AI Agents and chatbots"/>
+            <Widget size="sm" imageSrc={aiAgent} text="AI Agents and chatbots" />
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc={linkedin} text="Linkedin" href={'https://www.linkedin.com/company/pixel-experts-team/'}/>
+            <Widget size="sm" imageSrc={linkedin} text="Linkedin" href={'https://www.linkedin.com/company/pixel-experts-team/'} />
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc={whatsapp} text="WhatsApp" href={'https://wa.me/48884037664?text=Hello%2C%20Pixel%20%21'}/>
+            <Widget size="sm" imageSrc={whatsapp} text="WhatsApp" href={'https://wa.me/48884037664?text=Hello%2C%20Pixel%20%21'} />
           </div>
 
           <div className="main-top__widgets-widget">
@@ -43,7 +44,7 @@ export default function Main({ id }) {
           </div>
 
           <div className="main-top__widgets-widget">
-            <Widget size="sm" imageSrc={instagram} text="Instagram" href={'https://www.instagram.com/pixelexpertsteam'}/>
+            <Widget size="sm" imageSrc={instagram} text="Instagram" href={'https://www.instagram.com/pixelexpertsteam'} />
           </div>
 
           <div className="main-top__widgets-widget">
@@ -114,7 +115,7 @@ export default function Main({ id }) {
             />
 
             <div className="main-bottom__widgets-widget">
-              <Widget size="sm" imageSrc={linkedin} text="Linkedin" href={"https://www.linkedin.com/company/pixel-experts-team/"}/>
+              <Widget size="sm" imageSrc={linkedin} text="Linkedin" href={"https://www.linkedin.com/company/pixel-experts-team/"} />
             </div>
           </div>
 

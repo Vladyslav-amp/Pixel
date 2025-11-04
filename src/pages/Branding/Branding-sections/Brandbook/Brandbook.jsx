@@ -120,7 +120,7 @@ export default function Brandbook({ id }) {
           <Widget size="sm" imageSrc={whiteFolder} text="See examples" />
         </div>
 
-        <div className="brandbook-block__widget brandbook-block__widget--pixel">
+        <div className="brandbook-block__widget brandbook-block__widget--pixel pixel-ai">
           <Widget size="sm" imageSrc={pixelmate} text="PixelMate" />
         </div>
 

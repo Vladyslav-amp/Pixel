@@ -103,39 +103,39 @@
 }
 
 .pixel-ai ::after {
-      content: "1";
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      width: 14px;
-      height: 14px;
-      background-color: #FF901B;
-      text-align: center;
-      font-size: 14px;
-      font-family: $main-text-font;
-      color: $submain-text-color;
-      font-weight: 300;
-      border-radius: 50%;
-      border: 1px solid $submain-text-color;
-      animation: pulse 1.5s infinite;
-    }
+  content: "1";
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  background-color: #FF901B;
+  text-align: center;
+  font-size: 14px;
+  font-family: $main-text-font;
+  color: $submain-text-color;
+  font-weight: 300;
+  border-radius: 50%;
+  border: 1px solid $submain-text-color;
+  animation: pulse 1.5s infinite;
+}
 
-    @keyframes pulse {
-      0% {
-        transform: scale(0.9);
-        opacity: 1;
-      }
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
 
-      50% {
-        transform: scale(1.3);
-        opacity: 0.9;
-      }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.9;
+  }
 
-      100% {
-        transform: scale(0.9);
-        opacity: 1;
-      }
-    }
+  100% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+}
 
 
 .main-bottom__widgets {
@@ -362,7 +362,11 @@
   }
 }
 
-.expander--open .expander__panel .expander__item {
-  padding: 10px;
 
+@include onTablet {
+  .expander--open .expander__panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+  }
 }

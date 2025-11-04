@@ -27,7 +27,7 @@ export default function Main({ id }) {
           <Widget size="lg" imageSrc={check} text="Check what you need"  textColor="light"/>
         </div>
 
-        <div className="main-block__widget main-block__widget-pixel">
+        <div className="main-block__widget main-block__widget-pixel pixel-ai">
           <Widget size="sm" imageSrc={pixel} text="PixelMate" />
         </div>
 

@@ -211,3 +211,24 @@
     }
   }
 }
+
+.header-zone__btn--relative {
+  position: fixed;
+  top: 90px;
+  width: 100%;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+
+  @include onTablet {
+    top: 105px;
+  }
+}
+
+.header-zone__btn--relative.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
