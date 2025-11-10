@@ -1,0 +1,236 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+
+.contactus {
+  height: 100%;
+  background: linear-gradient(180deg, #49A0A9 49.35%, #0C0C0B 100%);
+
+  &-block {
+    @include max-width-page;
+    @include section-padding;
+
+    &__top {
+      @include pageGrid;
+      grid-auto-rows: minmax(0, auto);
+      margin: 90px 0 32px 0;
+      grid-column: 1 / 4;
+
+      @include onTablet {
+        margin: 130px 0 50px 0;
+      }
+
+      @include onDesktop {
+        margin: 178px 0 86px 0;
+        border-radius: 8px;
+        border: 1px solid $submain-text-color;
+        background: rgba(243, 243, 242, 0.20);
+        padding: 24px 16px;
+      }
+
+      &> :nth-child(1) {
+        grid-column: 3 / 4;
+        grid-row: 1;
+
+        @include onTablet {
+          grid-column: 7 / 9;
+        }
+
+        @include onDesktop {
+          display: none;
+        }
+      }
+
+      &> :nth-child(2) {
+        grid-column: 1 / 4;
+        grid-row: 2;
+        padding-top: 32px;
+
+        @include onTablet {
+          place-items: center;
+          grid-column: 2 / 8;
+        }
+
+        @include onDesktop {
+          grid-column: 1 / 7;
+          grid-row: 1;
+          justify-self: start;
+          place-items: start;
+        }
+      }
+
+      &> :nth-child(3) {
+        grid-column: 1 / 4;
+        grid-row: 3;
+        padding-top: 20px;
+        display: grid;
+        row-gap: 20px;
+
+        @include onTablet {
+          padding-top: 40px;
+          grid-column: 1 / -1;
+          grid-row: 3;
+        }
+
+        @include onDesktop {
+          grid-column: 7 / 13;
+          grid-row: 1;
+          justify-self: end;
+        }
+      }
+
+      &-block--social {
+        @include onTablet {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        @include onDesktop {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    &__bottom {
+      @include pageGrid;
+      grid-auto-rows: minmax(0, auto);
+
+
+      &> :nth-child(1) {
+        display: grid;
+        gap: 8px;
+        place-items: center;
+        padding-block: 16px;
+        grid-column: 1 / 4;
+        grid-row: 1;
+
+        @include onTablet {
+          grid-column: 3 / 7;
+        }
+
+        @include onDesktop {
+          grid-column: 4 / 10;
+        }
+      }
+
+      &> :nth-child(2) {
+        grid-column: 1 / 4;
+        grid-row: 2;
+        padding-top: 12px;
+
+        @include onTablet {
+          grid-column: 3 / 7;
+          padding-top: 28px;
+        }
+
+        @include onDesktop {
+          padding-top: 48px;
+          grid-column: 4 / 10;
+        }
+      }
+    }
+  }
+
+  &-top {
+    &__head {
+      color: $orange-color;
+      font-family: $main-text-font;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      padding-bottom: 12px;
+    }
+
+    &__title {
+      color: $submain-text-color;
+      font-family: $submain-text-font;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      padding-bottom: 20px;
+    }
+
+    &__subtitle {
+      color: $submain-text-color;
+      font-family: $main-text-font;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    &__social {
+      display: flex;
+      gap: 16px;
+
+      &-data {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      &-head {
+        color: $submain-text-color;
+        font-family: $submain-text-font;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      &-info {
+        text-decoration: none;
+        color: $submain-text-color;
+        font-family: $main-text-font;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      &-email {
+        word-break: break-all;
+      }
+
+      &-link {
+        @include onTablet {
+          display: flex;
+          gap: 30px;
+        }
+      }
+    }
+  }
+
+  &-bottom {
+    &__head {
+      color: $orange-color;
+      font-family: $main-text-font;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+
+    &__title {
+      color: $submain-text-color;
+      text-align: center;
+      font-family: $submain-text-font;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: uppercase;
+    }
+
+    &__subtitle {
+      color: $submain-text-color;
+      text-align: center;
+      font-family: $submain-text-font;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: uppercase;
+    }
+  }
+}
