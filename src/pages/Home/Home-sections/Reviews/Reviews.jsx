@@ -99,7 +99,7 @@ export default function Reviews({ id }) {
         </div>
 
         <div className="reviews-widgets reviews-widgets--second pixel-ai">
-          <Widget size="sm" imageSrc={pixelMate} text="PixelMate" />
+          <Widget size="sm" imageSrc={pixelMate} text="PixelMate" textColor="light"/>
         </div>
       </div>
     </section>

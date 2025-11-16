@@ -15,10 +15,11 @@ export default function Widget({
   double = false,
   textColor = '#0C0C0B',
 
-
   enablePopup = false,
   popupTitle,
   popupItems = [],
+
+  limitToFooter = false,
 }) {
   const Tag = href ? 'a' : 'div'
   const clickable = !!(href || onClick || enablePopup)
@@ -29,6 +30,8 @@ export default function Widget({
 
   const [open, setOpen] = useState(false)
   const popupRef = useRef(null)
+
+  const [bottomOffset, setBottomOffset] = useState(24)
 
   useEffect(() => {
     if (!open) return
@@ -56,6 +59,35 @@ export default function Widget({
     }
     onClick?.(e)
   }
+  useEffect(() => {
+    if (!limitToFooter) return
+
+    const footer = document.querySelector('footer')
+    if (!footer) return
+
+    const thresholds = Array.from({ length: 101 }, (_, i) => i / 100)
+    const BASE_BOTTOM = 46
+    const SAFE_GAP = 46
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        const viewportHeight = window.innerHeight
+        const footerTop = entry.boundingClientRect.top
+
+        if (footerTop < viewportHeight) {
+          const neededBottom = viewportHeight - footerTop + SAFE_GAP
+          setBottomOffset(Math.max(BASE_BOTTOM, neededBottom))
+        } else {
+          setBottomOffset(BASE_BOTTOM)
+        }
+      },
+      { threshold: thresholds }
+    )
+
+    observer.observe(footer)
+    return () => observer.disconnect()
+  }, [limitToFooter])
 
   return (
     <>
@@ -67,6 +99,7 @@ export default function Widget({
         aria-label={text}
         aria-haspopup={enablePopup ? 'dialog' : undefined}
         aria-expanded={enablePopup ? open : undefined}
+        style={limitToFooter ? { bottom: `${bottomOffset}px` } : undefined}
       >
         <div className="widget__media">
           {double && backImageSrc && (

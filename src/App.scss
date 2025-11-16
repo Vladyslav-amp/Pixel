@@ -4,12 +4,14 @@
   box-sizing: border-box;
 }
 
+
 html {
   scroll-behavior: smooth;
   z-index: 9999;
 }
-html { scrollbar-gutter: stable; }       /* стабілізує ширину при появі/зникненні скролбара */
-body.modal-open {                        /* ставиться/знімається у твоєму попапі */
+
+html { scrollbar-gutter: stable; }       
+body.modal-open {                        
   overflow: hidden;
   overscroll-behavior: contain;
   touch-action: none;

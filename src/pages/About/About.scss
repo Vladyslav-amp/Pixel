@@ -1,0 +1,23 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+
+.aboutus__main {
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle,
+        var(--dot) 0 var(--dot-size),
+        transparent calc(var(--dot-size) + 1px))
+      0 0 / var(--gap) var(--gap) repeat;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+  :root{         
+    --dot: #fff;        
+    --dot-size: .5px;    
+    --gap: 80px; 
+  }

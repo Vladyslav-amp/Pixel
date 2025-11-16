@@ -1,0 +1,7 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+
+.about-main {
+  background: linear-gradient(180deg, #49A0A9 49.35%, #0C0C0B 100%);
+  height: 100vh;
+}

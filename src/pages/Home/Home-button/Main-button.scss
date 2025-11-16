@@ -1,4 +1,4 @@
-@use  '/src/styles/variables/variables.scss' as *;
+@use '/src/styles/variables/variables.scss' as *;
 
 .main-button {
   padding-block: 12px;
@@ -11,7 +11,7 @@
   user-select: none;
   transition: all 0.25s ease;
   border: none;
-  
+
 
   &__text {
     pointer-events: none;
@@ -45,14 +45,16 @@
 }
 
 .main-button--light {
-  background-color: rgba($submain-button-background, 100%);
-  color: $main-text-color;
+  border-radius: 8px;
+  background: rgba(12, 12, 11, 0.40);
+  backdrop-filter: blur(22.5px);
+  color: $submain-text-color;
 
   &:hover:not(:disabled) {
-    background-color: #f2f2f2;
+    background: rgba(12, 12, 11, 0.40);
   }
 
   &:active:not(:disabled) {
-    background-color: #e6e6e6;
+    background: rgba(12, 12, 11, 0.40);
   }
 }

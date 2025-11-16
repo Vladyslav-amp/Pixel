@@ -24,14 +24,10 @@
     pointer-events: auto;
     max-width: 462px;
     width: 100%;
-    grid-column: 1 / 4;
+    grid-column: 1 / -1;
 
     @include onTablet {
-      grid-column: 2 / 8;
-    }
-
-    @include onDesktop {
-      grid-column: 3 / 11;
+      min-width: 350px;
     }
   }
 
@@ -99,8 +95,8 @@
 
       & :nth-child(9) {
         & .site-dropdown__link {
-        background: rgba(12, 12, 11, 0.20) !important;
-        border: 0;
+          background: rgba(12, 12, 11, 0.20) !important;
+          border: 0;
         }
       }
     }
@@ -191,15 +187,12 @@
     transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
 
-    grid-column: 1 / 4;
+    grid-column: 1 / -1;
 
     @include onTablet {
-      grid-column: 2 / 8;
+      min-width: 350px;
     }
 
-    @include onDesktop {
-      grid-column: 3 / 11;
-    }
 
     & button {
       padding-block: 18px;

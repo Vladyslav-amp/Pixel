@@ -19,16 +19,16 @@ export default function Branding() {
   const [isContactOpen, setContactOpen] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
 
-  // 👉 pokazuj guzik po przewinięciu > 100vh
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || window.pageYOffset;
-      const triggerPoint = window.innerHeight; // 100vh
+      const triggerPoint = window.innerHeight; 
       setShowBtn(scrollY > triggerPoint);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // wywołaj raz na start (np. gdy user odświeży niżej)
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

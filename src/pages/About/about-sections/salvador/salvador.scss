@@ -1,0 +1,7 @@
+@use "@/styles/mixins/mixins" as *;
+@use "/src/styles/variables/variables.scss" as *;
+
+.salvador {
+  height: 100vh;
+  background-color: #def263;
+}

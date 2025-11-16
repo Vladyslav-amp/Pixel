@@ -7,6 +7,7 @@ import Branding from './pages/Branding/Branding.jsx'
 import Home from './pages/Home/Home.jsx';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx';
 import ContactUs from './pages/Contact/ContactUs.jsx'
+import About from './pages/About/About.jsx';
 
 import './App.scss'
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path='/Branding' element={<Branding />} />
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/about" element={<About />} />
           <Route path="/contact" element={<ContactUs />} />
           {/* <Route path="/agents" element={<AgentsPage />} />
           <Route path="/workflow" element={<WorkflowPage />} />

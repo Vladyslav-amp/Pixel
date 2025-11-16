@@ -16,7 +16,7 @@ import img9 from "@/assets/images/uriel-carousel/uriel-carousel9.webp";
 import pixelmate from '@/assets/images/widgets/pixel-mate.webp'
 import video from '@/assets/images/widgets/video.webp'
 import whiteFolder from '@/assets/images/widgets/white-folder.svg'
-import accordion from '@/assets/images/widgets/accordion.png'
+import accordion from '@/assets/images/widgets/accordion.webp'
 import MainButton from '../../../Home/Home-button/Main-button.jsx';
 
 

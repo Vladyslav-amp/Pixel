@@ -5,11 +5,17 @@
 .MainWindow {
   height: fit-content;
   padding-inline: 16px;
-  background-color: #fff;
+  border: 1px solid #F3F3F2;
+  background: rgba(243, 243, 242, 0.20);
+  backdrop-filter: blur(22.5px);
   border-radius: 8px;
   margin: 0 auto;
   max-width: 462px;
   width: 100%;
+
+  @include onTablet {
+    min-width: 300px;
+  }
 
   &__container {
     display: flex;

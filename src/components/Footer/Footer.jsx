@@ -39,7 +39,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="footer" role="contentinfo">
+    <footer className="footer" role="contentinfo" id="footer">
       <div className="footer-block">
         <nav className="footer__nav" aria-label="Footer navigation">
           <ul className="footer__menu">
